@@ -604,12 +604,6 @@ export default function Portfolio() {
                   <div className="flex-shrink-0">
                     <Phone className="w-8 h-8 text-purple-400" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-1">
-                      Phone
-                    </h3>
-                    <p className="text-slate-300">+923218189034</p>
-                  </div>
                 </div>
               </div>
 

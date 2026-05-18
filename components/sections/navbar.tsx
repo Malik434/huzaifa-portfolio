@@ -1,28 +1,28 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { User, Cpu, FolderGit, Briefcase, Mail } from "lucide-react";
 
-const LINKS = ["About","Skills","Projects","Experience","Contact"];
+const LINKS = [
+  { label: "About", id: "about", icon: User },
+  { label: "Skills", id: "skills", icon: Cpu },
+  { label: "Projects", id: "projects", icon: FolderGit },
+  { label: "Experience", id: "experience", icon: Briefcase },
+  { label: "Contact", id: "contact", icon: Mail },
+];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
     const observers: IntersectionObserver[] = [];
-    LINKS.forEach((id) => {
-      const el = document.getElementById(id.toLowerCase());
+    LINKS.forEach(({ id }) => {
+      const el = document.getElementById(id);
       if (!el) return;
       const obs = new IntersectionObserver(
-        ([e]) => { if (e.isIntersecting) setActive(id.toLowerCase()); },
-        { threshold: 0.4 }
+        ([e]) => {
+          if (e.isIntersecting) setActive(id);
+        },
+        { threshold: 0.3, rootMargin: "-15% 0px -60% 0px" }
       );
       obs.observe(el);
       observers.push(obs);
@@ -32,84 +32,176 @@ export function Navbar() {
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setOpen(false);
   };
 
   return (
-    <nav
-      style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-        background: scrolled ? "rgba(10,10,15,0.85)" : "rgba(10,10,15,0.6)",
-        backdropFilter: "blur(16px)",
-        borderBottom: `1px solid var(--color-border)`,
-        transition: "all var(--transition-smooth)",
-        padding: scrolled ? "0.6rem 0" : "1rem 0",
-      }}
-    >
-      <div className="max-container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+    <>
+      {/* DESKTOP: Floating Left Glass Dock */}
+      <nav
+        className="hidden md:flex"
+        style={{
+          position: "fixed",
+          left: "2rem",
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: 50,
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "1.5rem",
+          padding: "1.75rem 0.85rem",
+          borderRadius: "32px",
+          background: "rgba(10, 10, 15, 0.45)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(255, 255, 255, 0.08)",
+          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+        }}
+      >
+        {/* Creative Top Logo Indicator */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={{
-            fontFamily: "var(--font-mono)", fontWeight: 600, fontSize: "1.2rem",
-            color: "var(--color-accent-primary)", background: "none", border: "none",
-            cursor: "pointer", letterSpacing: "-0.02em",
+            width: 44,
+            height: 44,
+            borderRadius: "50%",
+            background: "var(--color-bg-tertiary)",
+            border: "1px solid var(--color-border)",
+            color: "var(--color-accent-primary)",
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.85rem",
+            fontWeight: 700,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: "0.75rem",
+            transition: "all var(--transition-smooth)",
+            boxShadow: "0 0 12px var(--color-accent-glow)",
           }}
-          aria-label="Back to top"
+          className="logo-btn"
+          aria-label="Scroll to top"
         >
-          &lt;HBH /&gt;
+          H
         </button>
 
-        <div style={{ gap: "2rem" }} className="hidden md:flex">
-          {LINKS.map((l) => (
-            <button
-              key={l}
-              onClick={() => scrollTo(l.toLowerCase())}
-              className={`nav-link${active === l.toLowerCase() ? " active" : ""}`}
-              aria-label={`Go to ${l} section`}
-            >
-              {l}
-            </button>
-          ))}
-        </div>
+        {/* Separator */}
+        <div style={{ width: "24px", height: "1px", background: "var(--color-border)", marginBottom: "0.5rem" }} />
 
-        <div className="md:hidden">
-          <button
-            onClick={() => setOpen(!open)}
-            style={{
-              background: "none", border: "none", cursor: "pointer",
-              color: "var(--color-text-primary)", padding: "0.5rem", minHeight: 44, minWidth: 44,
-              alignItems: "center", justifyContent: "center", display: "flex",
-            }}
-            aria-label={open ? "Close menu" : "Open menu"}
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
+        {/* Nav Links Stack */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          {LINKS.map(({ label, id, icon: Icon }) => {
+            const isActive = active === id;
+            return (
+              <div key={id} style={{ position: "relative" }} className="nav-dock-item">
+                <button
+                  onClick={() => scrollTo(id)}
+                  style={{
+                    width: 46,
+                    height: 46,
+                    borderRadius: "50%",
+                    border: "none",
+                    background: isActive ? "var(--color-accent-primary)" : "transparent",
+                    color: isActive ? "#ffffff" : "var(--color-text-secondary)",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    transition: "all var(--transition-fast)",
+                  }}
+                  className="dock-icon-button"
+                  aria-label={`Go to ${label}`}
+                >
+                  <Icon size={20} strokeWidth={2.2} />
+                </button>
 
-      {open && (
-        <div
+                {/* Floating Tooltip Label */}
+                <span className="dock-tooltip">
+                  {label}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      </nav>
+
+      {/* MOBILE: Floating Bottom Glass Dock */}
+      <nav
+        className="flex md:hidden"
+        style={{
+          position: "fixed",
+          bottom: "1.5rem",
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 50,
+          flexDirection: "row",
+          alignItems: "center",
+          gap: "1.25rem",
+          padding: "0.65rem 1.25rem",
+          borderRadius: "999px",
+          background: "rgba(10, 10, 15, 0.65)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(255, 255, 255, 0.08)",
+          boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+          width: "max-content",
+          maxWidth: "90vw",
+        }}
+      >
+        {/* Mobile Mini Logo */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={{
-            background: "var(--color-bg-secondary)", borderTop: `1px solid var(--color-border)`,
-            padding: "1rem 1.5rem", display: "flex", flexDirection: "column", gap: "0.25rem",
+            width: 38,
+            height: 38,
+            borderRadius: "50%",
+            background: "rgba(255, 255, 255, 0.06)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            color: "var(--color-accent-primary)",
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.85rem",
+            fontWeight: 700,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
+          aria-label="Scroll to top"
         >
-          {LINKS.map((l) => (
-            <button
-              key={l}
-              onClick={() => scrollTo(l.toLowerCase())}
-              style={{
-                padding: "0.75rem 0", background: "none", border: "none",
-                color: active === l.toLowerCase() ? "var(--color-accent-primary)" : "var(--color-text-secondary)",
-                fontFamily: "var(--font-heading)", fontSize: "1rem", fontWeight: 500,
-                textAlign: "left", cursor: "pointer", minHeight: 44, width: "100%",
-              }}
-            >
-              {l}
-            </button>
-          ))}
+          H
+        </button>
+
+        {/* Separator */}
+        <div style={{ width: "1px", height: "20px", background: "rgba(255,255,255,0.15)" }} />
+
+        {/* Horizontal Mobile Buttons */}
+        <div style={{ display: "flex", gap: "0.65rem" }}>
+          {LINKS.map(({ label, id, icon: Icon }) => {
+            const isActive = active === id;
+            return (
+              <button
+                key={id}
+                onClick={() => scrollTo(id)}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: "50%",
+                  border: "none",
+                  background: isActive ? "var(--color-accent-primary)" : "transparent",
+                  color: isActive ? "#ffffff" : "var(--color-text-secondary)",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "all var(--transition-fast)",
+                }}
+                aria-label={`Go to ${label}`}
+              >
+                <Icon size={18} strokeWidth={2.2} />
+              </button>
+            );
+          })}
         </div>
-      )}
-    </nav>
+      </nav>
+    </>
   );
 }

@@ -645,3 +645,62 @@
 
 /* ── Float animation class ────────────────────────────────── */
 .animate-float { animation: float 5s ease-in-out infinite; }
+
+/* ── Creative Navigation Dock & Tooltips ────────────────────── */
+.nav-dock-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dock-icon-button {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
+}
+
+.dock-icon-button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 15px var(--color-accent-glow);
+  color: var(--color-accent-primary) !important;
+}
+
+.logo-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 16px var(--color-accent-primary) !important;
+}
+
+.dock-tooltip {
+  position: absolute;
+  left: 3.5rem;
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text-primary);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-10px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.nav-dock-item:hover .dock-tooltip {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* Back to top placement override when sidebar is present */
+@media (min-width: 768px) {
+  #back-to-top {
+    left: 2rem;
+    bottom: 2rem;
+    right: auto;
+  }
+}
+

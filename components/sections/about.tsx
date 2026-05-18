@@ -3,7 +3,7 @@ import { BookOpen, Award } from "lucide-react";
 import { AnimatedSection } from "@/components/animated-section";
 import { StatCounter } from "@/components/stat-counter";
 
-const TAGS = ["Blockchain Enthusiast","Full-Stack Developer","AI Integration","Open Source"];
+const TAGS = ["Blockchain Enthusiast", "Full-Stack Developer", "AI Integration", "Open Source"];
 
 export function About() {
   return (
@@ -26,10 +26,10 @@ export function About() {
               </div>
 
               <p style={{ fontSize: "clamp(0.95rem,1.6vw,1.05rem)", color: "var(--color-text-secondary)", lineHeight: 1.9 }}>
-                I&apos;m a <strong style={{ color: "var(--color-text-primary)" }}>CS graduate from COMSATS University Islamabad</strong> with a passion for cutting-edge technologies. My expertise spans blockchain/DeFi development, AI integration, and full-stack web applications.
+                I&apos;m a <strong style={{ color: "var(--color-text-primary)" }}>CS graduate from COMSATS University Islamabad</strong> with a passion for cutting-edge technologies. My expertise spans blockchain development, AI integration, and full-stack web applications.
               </p>
               <p style={{ fontSize: "clamp(0.95rem,1.6vw,1.05rem)", color: "var(--color-text-secondary)", lineHeight: 1.9 }}>
-                I built and shipped <strong style={{ color: "var(--color-accent-secondary)" }}>YieldSense</strong> — a production DeFi protocol on Base Mainnet inside Acurast TEEs, featured in the Acurast Builder Spotlight — alongside multiple Web3 and AI-integrated products.
+                I built and shipped <strong style={{ color: "var(--color-accent-secondary)" }}>YieldSense</strong>, a production DeFi protocol on Base Mainnet inside Acurast TEEs, featured in the Acurast Builder Spotlight, alongside multiple Web3 and AI-integrated products.
               </p>
 
               <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", paddingTop: "0.5rem" }}>
@@ -65,7 +65,7 @@ export function About() {
                   <Award size={22} style={{ color: "var(--color-accent-primary)", flexShrink: 0 }} />
                   <h3 style={{ fontWeight: 700, color: "var(--color-text-primary)", fontSize: "1.05rem" }}>Languages</h3>
                 </div>
-                {[["English","Professional"],["Urdu","Native"],["Punjabi","Native"]].map(([lang, level]) => (
+                {[["English", "Professional"], ["Urdu", "Native"], ["Punjabi", "Native"]].map(([lang, level]) => (
                   <div key={lang} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0.5rem 0", borderBottom: "1px solid var(--color-border)" }}>
                     <span style={{ color: "var(--color-text-secondary)", fontSize: "0.9rem" }}>{lang}</span>
                     <span className="tag-pill" style={{ fontSize: "0.72rem" }}>{level}</span>

@@ -7,7 +7,7 @@ const ENTRIES = [
     title: "Core Contributor",
     org: "SingularityNET Ambassadors Program",
     desc: "Streamlining decentralized workflows and API-based integrations using low-code tools. Managing content scheduling, campaign distributions, AI product outreach, and organizing ecosystem announcements.",
-    tags: ["n8n","Ecosystem Management","Automation","API Integrations","AI Outreach"],
+    tags: ["n8n", "Ecosystem Management", "Automation", "API Integrations", "AI Outreach"],
     link: "",
   },
   {
@@ -15,7 +15,7 @@ const ENTRIES = [
     title: "Ecosystem Ambassador",
     org: "peaq Network (Layer-1 Blockchain for DePIN)",
     desc: "Built a localized DePIN community in Pakistan. Simplifed peaq L1 technology, updates, and ecosystem developments by crafting engaging educational threads. Provided technical guidance and community support.",
-    tags: ["peaq Network","DePIN","Community Growth","Technical Education","Web3"],
+    tags: ["peaq Network", "DePIN", "Community Growth", "Technical Education", "Web3"],
     link: "",
   },
   {
@@ -23,7 +23,7 @@ const ENTRIES = [
     title: "Bounty Board Manager",
     org: "Catalyst Swarm (Cardano Protocol)",
     desc: "Managed the community bounty board using Dework for Cardano Catalyst Swarm. Designed actionable technical bounties, coordinated task prioritization with project leads, verified submissions, and transparently handled token rewards.",
-    tags: ["Dework","Task Management","Escrow Payments","Cardano","Community Coordination"],
+    tags: ["Dework", "Task Management", "Escrow Payments", "Cardano", "Community Coordination"],
     link: "",
   },
 ];

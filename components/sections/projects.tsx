@@ -7,7 +7,7 @@ const PROJECTS = [
   {
     title: "YieldSense — Autonomous DeFi Yield & TEE Trading Protocol",
     desc: "Designed and deployed a trust-minimized yield compounding and grid-trading engine on Base Mainnet, running inside hardware-isolated Acurast TEE enclaves. Implemented native P-256 attestation verification (RIP-7212) in Solidity, EIP-712 intent signing for MEV protection, and a resilient RPC failover transport — featured in the Acurast Builder Spotlight.",
-    tags: ["Solidity","Acurast TEE","Base Mainnet","EIP-712","Viem/Wagmi","Next.js","Gnosis Safe"],
+    tags: ["Solidity", "Acurast TEE", "Base Mainnet", "EIP-712", "Viem/Wagmi", "Next.js", "Gnosis Safe"],
     category: "fullstack",
     live: "https://yieldsense.huzaifamalik.tech",
     github: "https://github.com/Malik434/yieldsense",
@@ -17,7 +17,7 @@ const PROJECTS = [
   {
     title: "Task Wiser — Web3 AI Project Management Platform",
     desc: "Engineered a high-performance project management dApp featuring real-time Firebase syncing, a Python (Flask) Machine Learning microservice for task duration estimation, and Solidity escrow smart contracts for secure task completion payouts.",
-    tags: ["React","Solidity","Firebase","Flask","Scikit-Learn","Ethers.js","MetaMask"],
+    tags: ["React", "Solidity", "Firebase", "Flask", "Scikit-Learn", "Ethers.js", "MetaMask"],
     category: "fullstack",
     live: "https://taskwiser.huzaifamalik.tech",
     github: "https://github.com/Malik434",
@@ -27,7 +27,7 @@ const PROJECTS = [
   {
     title: "EVM Mobile Wallet Manager",
     desc: "React Native mobile-first wallet manager enabling secure private key handling, transaction signing, and real-time wallet balance tracking by integrating Infura APIs with a modular provider pattern for EVM testnets and mainnets.",
-    tags: ["React Native","Blockchain","EVM","Infura API","Mobile Security"],
+    tags: ["React Native", "Blockchain", "EVM", "Infura API", "Mobile Security"],
     category: "frontend",
     live: "",
     github: "https://github.com/Malik434/Semester-Project-MAD.-main",
@@ -37,7 +37,7 @@ const PROJECTS = [
   {
     title: "Portfolio Performance Analytics Engine",
     desc: "Developed a professional crypto portfolio tracker using PHP and MySQL. Compares purchase price basis with real-time market data to calculate ROI and performance metrics, featuring an XML-based data CRUD interface.",
-    tags: ["PHP","MySQL","XML","CRUD","Portfolio Analytics"],
+    tags: ["PHP", "MySQL", "XML", "CRUD", "Portfolio Analytics"],
     category: "fullstack",
     live: "",
     github: "https://github.com/Malik434",
@@ -47,7 +47,7 @@ const PROJECTS = [
   {
     title: "Automated Town Hall Editor & Scheduler",
     desc: "Built a robust n8n workflow that automatically fetches raw weekly meeting recordings, processes/trims the videos using programmatic FFmpeg scripts, and schedules distribution across social channels, cutting work hours by 90%.",
-    tags: ["n8n","FFmpeg","YouTube API","Workflow Automation"],
+    tags: ["n8n", "FFmpeg", "YouTube API", "Workflow Automation"],
     category: "automation",
     live: "",
     github: "https://github.com/Malik434",
@@ -57,7 +57,7 @@ const PROJECTS = [
   {
     title: "Automated Meeting Archival System",
     desc: "Designed an automated corporate archival pipeline utilizing n8n that captures Zoom recordings, transcripts, and metadata upon meeting completion, auto-organizing files into a structured Google Drive hierarchy.",
-    tags: ["n8n","Zoom API","Google Drive API","Cloud Archiving"],
+    tags: ["n8n", "Zoom API", "Google Drive API", "Cloud Archiving"],
     category: "automation",
     live: "",
     github: "https://github.com/Malik434",
@@ -66,13 +66,13 @@ const PROJECTS = [
   },
 ];
 
-const FILTERS = ["All","Frontend","Backend","Full Stack","Automation"] as const;
+const FILTERS = ["All", "Frontend", "Backend", "Full Stack", "Automation"] as const;
 type Filter = typeof FILTERS[number];
 
-const CAT_MAP: Record<Filter, string> = { 
-  "All": "", 
-  "Frontend": "frontend", 
-  "Backend": "backend", 
+const CAT_MAP: Record<Filter, string> = {
+  "All": "",
+  "Frontend": "frontend",
+  "Backend": "backend",
   "Full Stack": "fullstack",
   "Automation": "automation"
 };

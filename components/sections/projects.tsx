@@ -15,39 +15,29 @@ const PROJECTS = [
     spotlight: "https://acurast.com/blog/builder-spotlight/yieldsense/",
   },
   {
-    title: "WEB3 Project Management Tool (TaskWiser)",
-    desc: "Comprehensive Web3 PM platform with AI integrations, real-time DB sync, EVM wallet integration, and IPFS storage support.",
-    tags: ["Web3","AI Integration","Firebase","EVM","React"],
+    title: "Task Wiser — Web3 AI Project Management Platform",
+    desc: "Engineered a high-performance project management dApp featuring real-time Firebase syncing, a Python (Flask) Machine Learning microservice for task duration estimation, and Solidity escrow smart contracts for secure task completion payouts.",
+    tags: ["React","Solidity","Firebase","Flask","Scikit-Learn","Ethers.js","MetaMask"],
     category: "fullstack",
-    live: "https://taskwiser.netlify.app",
+    live: "https://taskwiser.huzaifamalik.tech",
     github: "https://github.com/Malik434",
-    featured: false,
+    featured: true,
     spotlight: "",
   },
   {
-    title: "AI-Powered Kanban Board",
-    desc: "Responsive Kanban with AI-powered task time estimation, pricing prediction, and productivity analytics.",
-    tags: ["React.js","AI Integration","Real-time Sync"],
+    title: "EVM Mobile Wallet Manager",
+    desc: "React Native mobile-first wallet manager enabling secure private key handling, transaction signing, and real-time wallet balance tracking by integrating Infura APIs with a modular provider pattern for EVM testnets and mainnets.",
+    tags: ["React Native","Blockchain","EVM","Infura API","Mobile Security"],
     category: "frontend",
     live: "",
-    github: "https://github.com/Malik434",
+    github: "https://github.com/Malik434/Semester-Project-MAD.-main",
     featured: false,
     spotlight: "",
   },
   {
-    title: "EVM Wallet Manager",
-    desc: "EVM-based wallet manager for onchain payments, balance checking, and secure token transfers via Infura API.",
-    tags: ["Blockchain","EVM","Infura API","Web3"],
-    category: "backend",
-    live: "",
-    github: "https://github.com/Malik434",
-    featured: false,
-    spotlight: "",
-  },
-  {
-    title: "Portfolio Management System",
-    desc: "PHP + MySQL + XML CRUD app with structured database connectivity for efficient portfolio management.",
-    tags: ["PHP","MySQL","XML","CRUD"],
+    title: "Portfolio Performance Analytics Engine",
+    desc: "Developed a professional crypto portfolio tracker using PHP and MySQL. Compares purchase price basis with real-time market data to calculate ROI and performance metrics, featuring an XML-based data CRUD interface.",
+    tags: ["PHP","MySQL","XML","CRUD","Portfolio Analytics"],
     category: "fullstack",
     live: "",
     github: "https://github.com/Malik434",
@@ -55,10 +45,20 @@ const PROJECTS = [
     spotlight: "",
   },
   {
-    title: "Airbnb + PakWheels Clone",
-    desc: "Responsive UI clone demonstrating advanced frontend design, layout structuring, and cross-device responsiveness.",
-    tags: ["HTML5","CSS3","JavaScript","Bootstrap"],
-    category: "frontend",
+    title: "Automated Town Hall Editor & Scheduler",
+    desc: "Built a robust n8n workflow that automatically fetches raw weekly meeting recordings, processes/trims the videos using programmatic FFmpeg scripts, and schedules distribution across social channels, cutting work hours by 90%.",
+    tags: ["n8n","FFmpeg","YouTube API","Workflow Automation"],
+    category: "automation",
+    live: "",
+    github: "https://github.com/Malik434",
+    featured: false,
+    spotlight: "",
+  },
+  {
+    title: "Automated Meeting Archival System",
+    desc: "Designed an automated corporate archival pipeline utilizing n8n that captures Zoom recordings, transcripts, and metadata upon meeting completion, auto-organizing files into a structured Google Drive hierarchy.",
+    tags: ["n8n","Zoom API","Google Drive API","Cloud Archiving"],
+    category: "automation",
     live: "",
     github: "https://github.com/Malik434",
     featured: false,
@@ -66,10 +66,16 @@ const PROJECTS = [
   },
 ];
 
-const FILTERS = ["All","Frontend","Backend","Full Stack"] as const;
+const FILTERS = ["All","Frontend","Backend","Full Stack","Automation"] as const;
 type Filter = typeof FILTERS[number];
 
-const CAT_MAP: Record<Filter, string> = { "All": "", "Frontend": "frontend", "Backend": "backend", "Full Stack": "fullstack" };
+const CAT_MAP: Record<Filter, string> = { 
+  "All": "", 
+  "Frontend": "frontend", 
+  "Backend": "backend", 
+  "Full Stack": "fullstack",
+  "Automation": "automation"
+};
 
 export function Projects() {
   const [active, setActive] = useState<Filter>("All");

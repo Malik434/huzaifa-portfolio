@@ -3,27 +3,27 @@ import { AnimatedSection } from "@/components/animated-section";
 
 const ENTRIES = [
   {
-    period: "2024 – 2025",
-    title: "YieldSense — Acurast Builder Spotlight",
-    org: "Independent / Featured by Acurast Protocol",
-    desc: "Built a trust-minimized DeFi yield & grid-trading engine running in hardware-isolated Acurast TEE enclaves on Base Mainnet. Implemented P-256 attestation (RIP-7212) in Solidity, EIP-712 intent signing for MEV protection, and a resilient RPC failover transport. Project was featured in the Acurast Builder Spotlight.",
-    tags: ["Solidity","Acurast TEE","EIP-712","Base Mainnet","Viem/Wagmi","Gnosis Safe"],
-    link: "https://acurast.com/blog/builder-spotlight/yieldsense/",
-  },
-  {
-    period: "Feb 2022 – Jan 2026",
-    title: "BS Computer Science — Graduated",
-    org: "COMSATS University Islamabad, Lahore Campus",
-    desc: "Graduated with a focus on blockchain, AI integration, and full-stack development. Built production-grade projects covering Web3, AI, mobile, and database engineering. CGPA: 2.81/4.00.",
-    tags: ["C","Python","Java","Algorithms","Web Dev","Databases"],
+    period: "Jun 2023 – Present",
+    title: "Core Contributor",
+    org: "SingularityNET Ambassadors Program",
+    desc: "Streamlining decentralized workflows and API-based integrations using low-code tools. Managing content scheduling, campaign distributions, AI product outreach, and organizing ecosystem announcements.",
+    tags: ["n8n","Ecosystem Management","Automation","API Integrations","AI Outreach"],
     link: "",
   },
   {
-    period: "2023 – 2024",
-    title: "Full-Stack & Web3 Developer",
-    org: "Self-Directed / Open Source",
-    desc: "Delivered multiple production-grade projects: a Web3 project management platform (TaskWiser) with EVM wallet integration & IPFS storage, an AI-powered Kanban board with task estimation, and an EVM wallet manager using Infura API.",
-    tags: ["React","Next.js","Web3","Firebase","EVM","AI APIs"],
+    period: "Oct 2024 – Dec 2025",
+    title: "Ecosystem Ambassador",
+    org: "peaq Network (Layer-1 Blockchain for DePIN)",
+    desc: "Built a localized DePIN community in Pakistan. Simplifed peaq L1 technology, updates, and ecosystem developments by crafting engaging educational threads. Provided technical guidance and community support.",
+    tags: ["peaq Network","DePIN","Community Growth","Technical Education","Web3"],
+    link: "",
+  },
+  {
+    period: "Jun 2022 – Jun 2023",
+    title: "Bounty Board Manager",
+    org: "Catalyst Swarm (Cardano Protocol)",
+    desc: "Managed the community bounty board using Dework for Cardano Catalyst Swarm. Designed actionable technical bounties, coordinated task prioritization with project leads, verified submissions, and transparently handled token rewards.",
+    tags: ["Dework","Task Management","Escrow Payments","Cardano","Community Coordination"],
     link: "",
   },
 ];
@@ -54,7 +54,7 @@ export function Experience() {
                 >
                   <div className="hidden md:grid" style={{
                     gridTemplateColumns: "1fr 40px 1fr",
-                    gap: "1rem", alignItems: "start", display: "grid",
+                    gap: "1rem", alignItems: "start",
                   }}>
                     <div style={{ ...(isLeft ? {} : { visibility: "hidden" }) }}>
                       {isLeft && <EntryCard entry={entry} />}
@@ -67,7 +67,7 @@ export function Experience() {
                     </div>
                   </div>
                   {/* Mobile: stacked */}
-                  <div className="md:hidden" style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                  <div className="flex md:hidden" style={{ gap: "1rem", alignItems: "flex-start" }}>
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: "1.2rem", flexShrink: 0 }}>
                       <div className="timeline-node" />
                     </div>

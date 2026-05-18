@@ -1,5 +1,5 @@
 "use client";
-import { Download, ChevronDown, Github } from "lucide-react";
+import { ChevronDown, Github } from "lucide-react";
 import { Typewriter } from "@/components/typewriter";
 
 const CODE_SNIPPET = `// Huzaifa's stack
@@ -81,9 +81,6 @@ export function Hero() {
           <button className="btn-primary" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
             View My Work
           </button>
-          <a href="/Huzaifa_Resume.pdf" download className="btn-outline" style={{ textDecoration: "none" }}>
-            <Download size={16} /> Download CV
-          </a>
           <a href="https://github.com/Malik434" target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ textDecoration: "none" }}>
             <Github size={16} /> GitHub
           </a>

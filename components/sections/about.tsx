@@ -72,6 +72,39 @@ export function About() {
                   </div>
                 ))}
               </div>
+
+              {/* Certifications */}
+              <div className="card" style={{ padding: "1.5rem" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
+                  <Award size={22} style={{ color: "var(--color-accent-primary)", flexShrink: 0 }} />
+                  <h3 style={{ fontWeight: 700, color: "var(--color-text-primary)", fontSize: "1.05rem" }}>Certifications</h3>
+                </div>
+                {[
+                  {
+                    name: "n8n Workflow Automation (Level 2)",
+                    issuer: "n8n.io",
+                    date: "Jan 2026",
+                    link: "https://community.n8n.io/badges/105/completed-n8n-course-level-2?username=malik434"
+                  },
+                  {
+                    name: "Intermediate Python Analytics",
+                    issuer: "DataCamp",
+                    date: "Aug 2024",
+                    link: "https://datacamp.com/completed/statement-of-accomplishment/course/fdf8a2e9025b825e3798b6a070ab27654c2a04fb"
+                  }
+                ].map((cert) => (
+                  <div key={cert.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", padding: "0.6rem 0", borderBottom: "1px solid var(--color-border)", flexDirection: "column", gap: "0.25rem" }}>
+                    <div style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ color: "var(--color-text-primary)", fontSize: "0.9rem", fontWeight: 600 }}>{cert.name}</span>
+                      <span style={{ color: "var(--color-text-muted)", fontSize: "0.75rem" }}>{cert.date}</span>
+                    </div>
+                    <div style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ color: "var(--color-accent-secondary)", fontSize: "0.8rem", fontWeight: 500 }}>{cert.issuer}</span>
+                      <a href={cert.link} target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.72rem", color: "var(--color-accent-primary)", textDecoration: "none", fontWeight: 600 }}>Verify ↗</a>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </AnimatedSection>
         </div>

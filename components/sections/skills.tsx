@@ -2,11 +2,12 @@
 import { AnimatedSection } from "@/components/animated-section";
 
 const SKILLS = [
-  { category: "Programming", icon: "{ }", items: ["C","Python","Java (OOP)"], wide: false },
-  { category: "Web Development", icon: "</>", items: ["HTML5","CSS3","JavaScript","React.js","Next.js","Bootstrap"], wide: true },
-  { category: "Databases", icon: "⬡", items: ["MySQL","Firebase","Realtime DB"], wide: false },
-  { category: "Blockchain & AI", icon: "⬢", items: ["Web3","EVM","IPFS","AI Tools","Infura API"], wide: false },
-  { category: "Mobile & Tools", icon: "◈", items: ["Android Studio","VS Code","Git/GitHub","Figma"], wide: true },
+  { category: "Programming Languages", icon: "{ }", items: ["Python", "JavaScript (Node.js/Express)", "SQL", "C", "Java (OOP)", "MATLAB"], wide: true },
+  { category: "Web Development", icon: "</>", items: ["React.js", "Next.js", "HTML5", "CSS3", "Bootstrap", "PHP"], wide: false },
+  { category: "Databases & Cloud", icon: "⬡", items: ["MySQL", "Firebase (Firestore, Realtime, Auth, Storage)"], wide: false },
+  { category: "Web3 & Blockchain", icon: "⬢", items: ["Solidity", "Acurast TEE", "Base Mainnet", "EVM", "EIP-712", "RIP-7212", "MetaMask", "IPFS", "Infura API"], wide: true },
+  { category: "Workflow Automation & AI", icon: "⚙", items: ["n8n (Level 2 Certified)", "AI Automation", "Flask (Python)", "Scikit-Learn", "NLP / NLTK", "FFmpeg", "Zoom & YouTube APIs"], wide: true },
+  { category: "Mobile & DevOps", icon: "◈", items: ["React Native", "Git/GitHub", "Docker", "GitLab"], wide: false },
 ];
 
 export function Skills() {

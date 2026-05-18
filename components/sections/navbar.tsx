@@ -59,7 +59,7 @@ export function Navbar() {
           &lt;HBH /&gt;
         </button>
 
-        <div style={{ display: "flex", gap: "2rem" }} className="hidden md:flex">
+        <div style={{ gap: "2rem" }} className="hidden md:flex">
           {LINKS.map((l) => (
             <button
               key={l}

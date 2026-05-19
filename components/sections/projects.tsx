@@ -5,7 +5,7 @@ import { AnimatedSection } from "@/components/animated-section";
 
 const PROJECTS = [
   {
-    title: "YieldSense — Autonomous DeFi Yield & TEE Trading Protocol",
+    title: "YieldSense, An Autonomous DeFi Yield & TEE Trading Protocol",
     desc: "Designed and deployed a trust-minimized yield compounding and grid-trading engine on Base Mainnet, running inside hardware-isolated Acurast TEE enclaves. Implemented native P-256 attestation verification (RIP-7212) in Solidity, EIP-712 intent signing for MEV protection, and a resilient RPC failover transport — featured in the Acurast Builder Spotlight.",
     tags: ["Solidity", "Acurast TEE", "Base Mainnet", "EIP-712", "Viem/Wagmi", "Next.js", "Gnosis Safe"],
     category: "fullstack",
@@ -15,7 +15,7 @@ const PROJECTS = [
     spotlight: "https://acurast.com/blog/builder-spotlight/yieldsense/",
   },
   {
-    title: "Task Wiser — Web3 AI Project Management Platform",
+    title: "Task Wiser, A Web3 AI Project Management Platform",
     desc: "Engineered a high-performance project management dApp featuring real-time Firebase syncing, a Python (Flask) Machine Learning microservice for task duration estimation, and Solidity escrow smart contracts for secure task completion payouts.",
     tags: ["React", "Solidity", "Firebase", "Flask", "Scikit-Learn", "Ethers.js", "MetaMask"],
     category: "fullstack",
@@ -36,9 +36,19 @@ const PROJECTS = [
   },
   {
     title: "Portfolio Performance Analytics Engine",
-    desc: "Developed a professional crypto portfolio tracker using PHP and MySQL. Compares purchase price basis with real-time market data to calculate ROI and performance metrics, featuring an XML-based data CRUD interface.",
-    tags: ["PHP", "MySQL", "XML", "CRUD", "Portfolio Analytics"],
-    category: "fullstack",
+    desc: "Developed a professional crypto portfolio tracker using PHP and MySQL. Compares purchase price basis with real-time market data to calculate ROI and performance metrics, featuring an XML-based data CRUD interface and a custom SQL database schema.",
+    tags: ["PHP", "MySQL", "XML", "CRUD", "SQL Database", "Portfolio Analytics"],
+    category: "backend",
+    live: "",
+    github: "https://github.com/Malik434",
+    featured: false,
+    spotlight: "",
+  },
+  {
+    title: "Predictive Task Inference & NLP Microservice",
+    desc: "Engineered a high-throughput Python (Flask) backend REST API for predictive task allocation. Implemented Scikit-Learn regression models to forecast project duration/cost metrics with 85%+ accuracy, and utilized NLTK-based Natural Language Processing to parse task descriptions and auto-recommend developers based on historical skill vectors.",
+    tags: ["Python", "Flask", "Scikit-Learn", "NLP", "RESTful API", "Machine Learning"],
+    category: "backend",
     live: "",
     github: "https://github.com/Malik434",
     featured: false,
@@ -99,7 +109,12 @@ export function Projects() {
           </div>
         </AnimatedSection>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.25rem" }}>
+        <div style={{ 
+          display: "grid", 
+          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
+          gap: "1.25rem",
+          gridAutoFlow: "dense" // Dynamically packs smaller cards into holes next to featured cards
+        }}>
           {filtered.map((p, i) => (
             <AnimatedSection
               key={p.title}
@@ -109,48 +124,68 @@ export function Projects() {
               <div
                 className="card"
                 style={{
-                  padding: "1.75rem", height: "100%", display: "flex", flexDirection: "column",
-                  position: "relative", overflow: "hidden",
+                  padding: "1.75rem",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  position: "relative",
+                  overflow: "hidden",
+                  transform: `rotate(${i % 2 === 0 ? 0.6 : -0.7}deg)`,
                 }}
               >
                 {p.featured && (
                   <span style={{
-                    position: "absolute", top: "1rem", right: "1rem",
-                    background: "var(--color-accent-glow)", border: "1px solid var(--color-accent-primary)",
-                    color: "var(--color-accent-primary)", fontSize: "0.7rem", fontWeight: 700,
-                    padding: "0.2rem 0.6rem", borderRadius: "999px", letterSpacing: "0.08em",
+                    position: "absolute",
+                    top: "1rem",
+                    right: "1rem",
+                    background: "var(--color-accent-secondary)", /* Neon Yellow print */
+                    border: "2px solid var(--color-border)",
+                    color: "#000000",
+                    fontSize: "0.68rem",
+                    fontWeight: 800,
+                    padding: "0.25rem 0.6rem",
+                    borderRadius: "0px",
+                    letterSpacing: "0.08em",
+                    fontFamily: "var(--font-mono)",
+                    boxShadow: "2px 2px 0px var(--color-border)",
+                    transform: "rotate(3deg)",
                   }}>FEATURED</span>
                 )}
-                <h3 style={{ fontWeight: 700, color: "var(--color-text-primary)", fontSize: "1.05rem", marginBottom: "0.75rem", paddingRight: p.featured ? "5rem" : 0 }}>
+                <h3 className="glitch-hover" style={{ fontWeight: 800, color: "var(--color-text-primary)", fontSize: "1.1rem", marginBottom: "0.75rem", paddingRight: p.featured ? "5.5rem" : 0 }}>
                   {p.title}
                 </h3>
-                <p style={{ color: "var(--color-text-secondary)", fontSize: "0.9rem", lineHeight: 1.7, flex: 1, marginBottom: "1.25rem" }}>
+                <p style={{ color: "var(--color-text-secondary)", fontSize: "0.9rem", lineHeight: 1.65, flex: 1, marginBottom: "1.25rem" }}>
                   {p.desc}
                 </p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "1.25rem" }}>
                   {p.tags.map((t) => <span key={t} className="tag-pill" style={{ fontSize: "0.72rem" }}>{t}</span>)}
                 </div>
                 <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
-                  <a href={p.github} target="_blank" rel="noopener noreferrer" className="social-icon-btn" aria-label="GitHub repo" style={{ textDecoration: "none" }}>
-                    <Github size={16} />
+                  <a href={p.github} target="_blank" rel="noopener noreferrer" className="btn-outline" aria-label="GitHub repo" style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.75rem", minHeight: "auto" }}>
+                    <Github size={14} /> &nbsp; Code
                   </a>
                   {p.live && (
-                    <a href={p.live} target="_blank" rel="noopener noreferrer" className="social-icon-btn" aria-label="Live demo" style={{ textDecoration: "none" }}>
-                      <ExternalLink size={16} />
+                    <a href={p.live} target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label="Live demo" style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.75rem", minHeight: "auto" }}>
+                      <ExternalLink size={14} /> &nbsp; Live
                     </a>
                   )}
                   {p.spotlight && (
                     <a
-                      href={p.spotlight} target="_blank" rel="noopener noreferrer"
+                      href={p.spotlight}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary"
                       style={{
-                        textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "0.35rem",
-                        padding: "0.3rem 0.75rem", borderRadius: "999px", fontSize: "0.72rem", fontWeight: 600,
-                        background: "rgba(0,212,170,0.1)", border: "1px solid rgba(0,212,170,0.35)",
-                        color: "var(--color-accent-secondary)", transition: "all var(--transition-fast)",
+                        textDecoration: "none",
+                        padding: "0.4rem 0.8rem",
+                        fontSize: "0.72rem",
+                        minHeight: "auto",
+                        background: "var(--color-accent-secondary)",
+                        color: "#000000",
                       }}
                       aria-label="Acurast Builder Spotlight"
                     >
-                      ✦ Builder Spotlight
+                      ✦ Spotlight
                     </a>
                   )}
                 </div>

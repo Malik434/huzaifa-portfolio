@@ -3,18 +3,14 @@ import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer style={{
-      background: "var(--color-bg-primary)",
-      borderTop: "1px solid var(--color-border)",
-      padding: "2.5rem 0",
-    }}>
-      <div className="max-container" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}>
+    <footer className="brutalist-footer">
+      <div className="max-container" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.5rem" }}>
         <div>
-          <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem" }}>
-            © {new Date().getFullYear()} <span style={{ color: "var(--color-text-secondary)" }}>Huzaifa Bin Hamid</span>. All rights reserved.
+          <p style={{ color: "var(--color-text-primary)", fontSize: "0.875rem", fontWeight: 700, fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>
+            © {new Date().getFullYear()} <span style={{ color: "var(--color-accent-primary)" }}>Huzaifa Bin Hamid</span>.
           </p>
-          <p style={{ color: "var(--color-text-muted)", fontSize: "0.8rem", marginTop: "0.2rem" }}>
-            Crafted with precision & passion
+          <p style={{ color: "var(--color-text-secondary)", fontSize: "0.8rem", marginTop: "0.25rem", fontFamily: "var(--font-mono)" }}>
+            ✦ TECH ZINE // BRUTALIST PORTFOLIO v2026 ✦
           </p>
         </div>
         <div style={{ display: "flex", gap: "0.75rem" }}>
@@ -25,7 +21,7 @@ export function Footer() {
             { href: "mailto:malikhuzaifa043@gmail.com", icon: <Mail size={18} />, label: "Email" },
           ].map(({ href, icon, label }) => (
             <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-              className="social-icon-btn" aria-label={label} style={{ textDecoration: "none" }}>
+              className="btn-outline" aria-label={label} style={{ textDecoration: "none", padding: "0.5rem", minWidth: "40px", minHeight: "40px", justifyContent: "center" }}>
               {icon}
             </a>
           ))}

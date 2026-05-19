@@ -14,20 +14,32 @@ export function Navbar() {
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    LINKS.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([e]) => {
-          if (e.isIntersecting) setActive(id);
-        },
-        { threshold: 0.3, rootMargin: "-15% 0px -60% 0px" }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
+    const handleScroll = () => {
+      let currentSection = "";
+      
+      for (const link of LINKS) {
+        const el = document.getElementById(link.id);
+        if (!el) continue;
+
+        const rect = el.getBoundingClientRect();
+        // A section is active if the 35% mark from top of viewport lies within its boundaries
+        const centerOffset = window.innerHeight * 0.35;
+        if (rect.top <= centerOffset && rect.bottom >= centerOffset) {
+          currentSection = link.id;
+          break;
+        }
+      }
+
+      if (currentSection) {
+        setActive(currentSection);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Initial call to set correct highlight on load
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollTo = (id: string) => {
@@ -36,59 +48,98 @@ export function Navbar() {
 
   return (
     <>
-      {/* DESKTOP: Floating Left Glass Dock */}
+      {/* 📰 TOP INFINITE SCROLLING TICKER */}
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "2.5rem",
+          background: "var(--color-text-primary)", /* Solid ink black */
+          borderBottom: "3px solid var(--color-accent-primary)", /* Tangerine rail */
+          zIndex: 100,
+          display: "flex",
+          alignItems: "center",
+          overflow: "hidden",
+          boxShadow: "0 4px 0px rgba(0,0,0,0.15)",
+        }}
+      >
+        <div className="ticker-container" style={{ display: "flex", whiteSpace: "nowrap" }}>
+          <div className="ticker-text">
+            {[...Array(4)].map((_, i) => (
+              <span
+                key={i}
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.8rem",
+                  fontWeight: 700,
+                  color: "var(--color-accent-secondary)", /* Neon Yellow print */
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  paddingRight: "3rem",
+                  display: "inline-block",
+                }}
+              >
+                ✦ HUZAIFA BIN HAMID // WEB3 & AUTOMATION ENGINEER ✦ COMSATS CS GRADUATE (JAN 2026) ✦ SHIPPED YIELDSENSE ON BASE MAINNET ✦ AVAILABLE FOR INTERNSHIPS & CONTRACTS ✦
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── DESKTOP: Brutalist Left Sidebar Dock ── */}
       <nav
-        className="hidden md:flex"
+        className="hidden md:flex brutalist-sidebar"
         style={{
           position: "fixed",
           left: "2rem",
-          top: "50%",
+          top: "calc(50% + 1.25rem)",
           transform: "translateY(-50%)",
           zIndex: 50,
           flexDirection: "column",
           alignItems: "center",
-          gap: "1.5rem",
-          padding: "1.75rem 0.85rem",
-          borderRadius: "32px",
-          background: "rgba(10, 10, 15, 0.45)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(255, 255, 255, 0.08)",
-          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+          gap: "1.25rem",
+          padding: "1.75rem 0.75rem",
+          borderRadius: "0px", /* Brutalist sharp */
+          background: "var(--color-bg-secondary)", /* Cream paper shaded */
+          border: "3px solid var(--color-border)", /* Bold ink outline */
+          boxShadow: "5px 5px 0px var(--color-border)", /* Flat offset drop shadow */
+          transition: "all var(--transition-smooth)",
         }}
       >
-        {/* Creative Top Logo Indicator */}
+        {/* Editorial Stamp Logo */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={{
             width: 44,
             height: 44,
-            borderRadius: "50%",
-            background: "var(--color-bg-tertiary)",
-            border: "1px solid var(--color-border)",
-            color: "var(--color-accent-primary)",
-            fontFamily: "var(--font-mono)",
-            fontSize: "0.85rem",
-            fontWeight: 700,
+            borderRadius: "0px",
+            background: "var(--color-accent-primary)", /* Tangerine stamp */
+            border: "2px solid var(--color-border)",
+            color: "#ffffff",
+            fontFamily: "var(--font-heading)",
+            fontSize: "1.1rem",
+            fontWeight: 900,
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginBottom: "0.75rem",
-            transition: "all var(--transition-smooth)",
-            boxShadow: "0 0 12px var(--color-accent-glow)",
+            marginBottom: "0.5rem",
+            transition: "all var(--transition-fast)",
+            boxShadow: "2px 2px 0px var(--color-border)",
           }}
-          className="logo-btn"
+          className="brutalist-logo-btn"
           aria-label="Scroll to top"
         >
           H
         </button>
 
         {/* Separator */}
-        <div style={{ width: "24px", height: "1px", background: "var(--color-border)", marginBottom: "0.5rem" }} />
+        <div style={{ width: "24px", height: "3px", borderTop: "2px dashed var(--color-border)", marginBottom: "0.5rem" }} />
 
         {/* Nav Links Stack */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
           {LINKS.map(({ label, id, icon: Icon }) => {
             const isActive = active === id;
             return (
@@ -96,25 +147,27 @@ export function Navbar() {
                 <button
                   onClick={() => scrollTo(id)}
                   style={{
-                    width: 46,
-                    height: 46,
-                    borderRadius: "50%",
-                    border: "none",
-                    background: isActive ? "var(--color-accent-primary)" : "transparent",
-                    color: isActive ? "#ffffff" : "var(--color-text-secondary)",
+                    width: 44,
+                    height: 44,
+                    borderRadius: "0px", /* Brutalist sharp */
+                    border: "2px solid var(--color-border)",
+                    background: isActive ? "var(--color-accent-secondary)" : "#ffffff", /* Neon Yellow / White print */
+                    color: "var(--color-text-primary)",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     transition: "all var(--transition-fast)",
+                    boxShadow: isActive ? "3px 3px 0px var(--color-border)" : "1px 1px 0px var(--color-border)",
+                    transform: isActive ? "translate(-2px, -2px)" : "none",
                   }}
                   className="dock-icon-button"
                   aria-label={`Go to ${label}`}
                 >
-                  <Icon size={20} strokeWidth={2.2} />
+                  <Icon size={18} strokeWidth={2.5} />
                 </button>
 
-                {/* Floating Tooltip Label */}
+                {/* Floating Monospaced Tooltip */}
                 <span className="dock-tooltip">
                   {label}
                 </span>
@@ -124,46 +177,45 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE: Floating Bottom Glass Dock */}
+      {/* ── MOBILE: Floating Bottom Brutalist Dock ── */}
       <nav
         className="flex md:hidden"
         style={{
           position: "fixed",
-          bottom: "1.5rem",
+          bottom: "1.25rem",
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 50,
           flexDirection: "row",
           alignItems: "center",
-          gap: "1.25rem",
-          padding: "0.65rem 1.25rem",
-          borderRadius: "999px",
-          background: "rgba(10, 10, 15, 0.65)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(255, 255, 255, 0.08)",
-          boxShadow: "0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+          gap: "0.75rem",
+          padding: "0.5rem 0.85rem",
+          borderRadius: "0px", /* Brutalist sharp */
+          background: "var(--color-bg-secondary)", /* Shaded paper */
+          border: "3px solid var(--color-border)", /* Ink outline */
+          boxShadow: "4px 4px 0px var(--color-border)", /* Solid drop shadow */
           width: "max-content",
-          maxWidth: "90vw",
+          maxWidth: "94vw",
         }}
       >
-        {/* Mobile Mini Logo */}
+        {/* Mobile Mini Stamp */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={{
-            width: 38,
-            height: 38,
-            borderRadius: "50%",
-            background: "rgba(255, 255, 255, 0.06)",
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            color: "var(--color-accent-primary)",
-            fontFamily: "var(--font-mono)",
-            fontSize: "0.85rem",
-            fontWeight: 700,
+            width: 44,
+            height: 44,
+            borderRadius: "0px",
+            background: "var(--color-accent-primary)", /* Tangerine */
+            border: "2px solid var(--color-border)",
+            color: "#ffffff",
+            fontFamily: "var(--font-heading)",
+            fontSize: "1.05rem",
+            fontWeight: 900,
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            boxShadow: "2px 2px 0px var(--color-border)",
           }}
           aria-label="Scroll to top"
         >
@@ -171,10 +223,10 @@ export function Navbar() {
         </button>
 
         {/* Separator */}
-        <div style={{ width: "1px", height: "20px", background: "rgba(255,255,255,0.15)" }} />
+        <div style={{ width: "3px", height: "24px", borderLeft: "2px dashed var(--color-border)", margin: "0 0.25rem" }} />
 
         {/* Horizontal Mobile Buttons */}
-        <div style={{ display: "flex", gap: "0.65rem" }}>
+        <div style={{ display: "flex", gap: "0.4rem" }}>
           {LINKS.map(({ label, id, icon: Icon }) => {
             const isActive = active === id;
             return (
@@ -182,21 +234,22 @@ export function Navbar() {
                 key={id}
                 onClick={() => scrollTo(id)}
                 style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: "50%",
-                  border: "none",
-                  background: isActive ? "var(--color-accent-primary)" : "transparent",
-                  color: isActive ? "#ffffff" : "var(--color-text-secondary)",
+                  width: 44,
+                  height: 44,
+                  borderRadius: "0px",
+                  border: "2px solid var(--color-border)",
+                  background: isActive ? "var(--color-accent-secondary)" : "#ffffff", /* Neon yellow highlight */
+                  color: "var(--color-text-primary)",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  transition: "all var(--transition-fast)",
+                  boxShadow: isActive ? "2px 2px 0px var(--color-border)" : "1px 1px 0px var(--color-border)",
+                  transform: isActive ? "translate(-1px, -1px)" : "none",
                 }}
                 aria-label={`Go to ${label}`}
               >
-                <Icon size={18} strokeWidth={2.2} />
+                <Icon size={18} strokeWidth={2.5} />
               </button>
             );
           })}

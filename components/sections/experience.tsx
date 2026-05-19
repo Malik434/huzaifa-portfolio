@@ -84,18 +84,25 @@ export function Experience() {
 }
 
 function EntryCard({ entry }: { entry: typeof ENTRIES[0] }) {
+  const rot = entry.title.length % 2 === 0 ? 0.6 : -0.7;
   return (
-    <div className="card" style={{ padding: "1.5rem" }}>
-      <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.72rem", color: "var(--color-accent-secondary)", marginBottom: "0.4rem", letterSpacing: "0.08em" }}>
-        {entry.period}
+    <div
+      className="card"
+      style={{
+        padding: "1.5rem",
+        transform: `rotate(${rot}deg)`,
+      }}
+    >
+      <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", fontWeight: 700, color: "var(--color-accent-primary)", marginBottom: "0.4rem", letterSpacing: "0.08em" }}>
+        // {entry.period}
       </p>
-      <h3 style={{ fontWeight: 700, color: "var(--color-text-primary)", fontSize: "1rem", marginBottom: "0.25rem" }}>
+      <h3 className="glitch-hover" style={{ fontWeight: 800, color: "var(--color-text-primary)", fontSize: "1.05rem", marginBottom: "0.25rem" }}>
         {entry.title}
       </h3>
-      <p style={{ color: "var(--color-accent-primary)", fontSize: "0.82rem", marginBottom: "0.75rem", fontWeight: 500 }}>
+      <p style={{ color: "var(--color-text-primary)", fontSize: "0.85rem", marginBottom: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>
         {entry.org}
       </p>
-      <p style={{ color: "var(--color-text-secondary)", fontSize: "0.875rem", lineHeight: 1.7, marginBottom: "1rem" }}>
+      <p style={{ color: "var(--color-text-secondary)", fontSize: "0.875rem", lineHeight: 1.6, marginBottom: "1rem" }}>
         {entry.desc}
       </p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: entry.link ? "0.75rem" : 0 }}>
@@ -104,12 +111,14 @@ function EntryCard({ entry }: { entry: typeof ENTRIES[0] }) {
       {entry.link && (
         <a
           href={entry.link} target="_blank" rel="noopener noreferrer"
+          className="btn-primary"
           style={{
             display: "inline-flex", alignItems: "center", gap: "0.35rem",
-            fontSize: "0.75rem", fontWeight: 600, color: "var(--color-accent-secondary)",
-            textDecoration: "none", padding: "0.3rem 0.75rem", borderRadius: "999px",
-            background: "rgba(0,212,170,0.08)", border: "1px solid rgba(0,212,170,0.3)",
-            transition: "all var(--transition-fast)",
+            fontSize: "0.72rem", fontWeight: 700,
+            textDecoration: "none", padding: "0.4rem 0.8rem", borderRadius: "0px",
+            minHeight: "auto",
+            background: "var(--color-accent-secondary)",
+            color: "#000000",
           }}
         >
           ✦ View Spotlight

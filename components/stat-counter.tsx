@@ -47,10 +47,7 @@ export function StatCounter({ target, suffix = "", label, duration = 1600 }: Sta
           fontSize: "clamp(2rem, 4vw, 3rem)",
           fontWeight: 800,
           fontFamily: "var(--font-heading)",
-          background: "linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary))",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
+          color: "var(--color-accent-primary)",
           lineHeight: 1,
         }}
       >

@@ -29,15 +29,25 @@ export function About() {
                 I&apos;m a <strong style={{ color: "var(--color-text-primary)" }}>CS graduate from COMSATS University Islamabad</strong> with a passion for cutting-edge technologies. My expertise spans blockchain development, AI integration, and full-stack web applications.
               </p>
               <p style={{ fontSize: "clamp(0.95rem,1.6vw,1.05rem)", color: "var(--color-text-secondary)", lineHeight: 1.9 }}>
-                I built and shipped <strong style={{ color: "var(--color-accent-secondary)" }}>YieldSense</strong>, a production DeFi protocol on Base Mainnet inside Acurast TEEs, featured in the Acurast Builder Spotlight, alongside multiple Web3 and AI-integrated products.
+                I built and shipped <strong style={{ background: "var(--color-accent-secondary)", color: "#000000", padding: "0.05rem 0.3rem", border: "1.5px solid var(--color-border)", boxShadow: "1.5px 1.5px 0px var(--color-border)", display: "inline-block", transform: "rotate(-1.2deg)" }}>YieldSense</strong>, a production DeFi protocol on Base Mainnet inside Acurast TEEs, featured in the Acurast Builder Spotlight, alongside multiple Web3 and AI-integrated products.
               </p>
 
               <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", paddingTop: "0.5rem" }}>
                 {TAGS.map((t) => <span key={t} className="tag-pill">{t}</span>)}
               </div>
 
-              {/* Stats */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1.5rem", marginTop: "1rem", padding: "1.5rem", background: "var(--color-bg-tertiary)", borderRadius: "var(--radius-md)", border: "1px solid var(--color-border)" }}>
+              {/* Stats Box — Zine Fact Card */}
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3,1fr)",
+                gap: "1rem",
+                marginTop: "1.5rem",
+                padding: "1.25rem",
+                background: "#ffffff",
+                borderRadius: "0px",
+                border: "3px solid var(--color-border)",
+                boxShadow: "4px 4px 0px var(--color-border)",
+              }}>
                 <StatCounter target={6} suffix="+" label="Projects" />
                 <StatCounter target={4} suffix="yr" label="Experience" />
                 <StatCounter target={3} suffix="+" label="Tech Stacks" />
@@ -56,7 +66,7 @@ export function About() {
                 </div>
                 <p style={{ fontWeight: 600, color: "var(--color-accent-primary)", marginBottom: "0.25rem" }}>BS Computer Science — Graduated</p>
                 <p style={{ color: "var(--color-text-secondary)", fontSize: "0.9rem", marginBottom: "0.25rem" }}>COMSATS University Islamabad, Lahore Campus</p>
-                <p style={{ color: "var(--color-text-muted)", fontSize: "0.82rem" }}>Feb 2022 – Jan 2026 &nbsp;|&nbsp; CGPA: 2.81 / 4.00</p>
+                <p style={{ color: "var(--color-text-muted)", fontSize: "0.82rem" }}>Feb 2022 – Feb 2026 </p>
               </div>
 
               {/* Languages */}
@@ -99,8 +109,8 @@ export function About() {
                       <span style={{ color: "var(--color-text-muted)", fontSize: "0.75rem" }}>{cert.date}</span>
                     </div>
                     <div style={{ display: "flex", width: "100%", justifyContent: "space-between", alignItems: "center" }}>
-                      <span style={{ color: "var(--color-accent-secondary)", fontSize: "0.8rem", fontWeight: 500 }}>{cert.issuer}</span>
-                      <a href={cert.link} target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.72rem", color: "var(--color-accent-primary)", textDecoration: "none", fontWeight: 600 }}>Verify ↗</a>
+                      <span style={{ color: "var(--color-accent-primary)", fontSize: "0.8rem", fontWeight: 700, fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>{cert.issuer}</span>
+                      <a href={cert.link} target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.72rem", color: "var(--color-text-primary)", textDecoration: "underline", fontWeight: 700, textTransform: "uppercase", fontFamily: "var(--font-mono)" }}>Verify ↗</a>
                     </div>
                   </div>
                 ))}

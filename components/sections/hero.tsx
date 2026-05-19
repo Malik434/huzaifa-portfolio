@@ -1,5 +1,5 @@
 "use client";
-import { ChevronDown, Github } from "lucide-react";
+import { Github } from "lucide-react";
 import { Typewriter } from "@/components/typewriter";
 
 const CODE_SNIPPET = `// Huzaifa's stack
@@ -31,15 +31,29 @@ export function Hero() {
       </div>
       <div className="subtle-grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.6 }} />
 
-      {/* Floating code card — desktop only */}
+      {/* Floating code card — desktop only (Zine Collage Style) */}
       <div
-        className="code-card hidden lg:block"
+        className="hidden lg:block"
         style={{
-          position: "absolute", right: "5%", top: "22%", maxWidth: 280, zIndex: 2,
+          position: "absolute",
+          right: "6%",
+          top: "24%",
+          maxWidth: 290,
+          zIndex: 2,
+          background: "#ffffff",
+          border: "3px solid var(--color-border)",
+          padding: "1.25rem",
+          boxShadow: "5px 5px 0px var(--color-border)",
+          transform: "rotate(-3deg)",
+          fontFamily: "var(--font-mono)",
+          fontSize: "0.78rem",
         }}
       >
+        <div style={{ borderBottom: "2px dashed var(--color-border)", paddingBottom: "0.4rem", marginBottom: "0.6rem", fontWeight: 700, textTransform: "uppercase", fontSize: "0.7rem", color: "var(--color-accent-primary)" }}>
+          ◆ Terminal Collage // Stack ◆
+        </div>
         {CODE_SNIPPET.split("\n").map((line, i) => (
-          <div key={i} style={{ whiteSpace: "pre", color: i === 0 ? "var(--color-text-muted)" : i === 1 ? "var(--color-accent-secondary)" : "var(--color-text-secondary)" }}>
+          <div key={i} style={{ whiteSpace: "pre", color: i === 0 ? "var(--color-text-muted)" : "var(--color-text-primary)", fontWeight: 600 }}>
             {line}
           </div>
         ))}
@@ -47,15 +61,43 @@ export function Hero() {
 
       {/* Content */}
       <div className="max-container" style={{ textAlign: "center", position: "relative", zIndex: 3, width: "100%" }}>
-        <div className="hero-img" style={{ marginBottom: "2rem" }}>
-          <div className="profile-ring" style={{ display: "inline-block" }}>
+        <div className="hero-img" style={{ marginBottom: "2.5rem", display: "inline-block", position: "relative" }}>
+          {/* Collage sticker accent */}
+          <span style={{
+            position: "absolute",
+            top: "-10px",
+            right: "-20px",
+            background: "var(--color-accent-primary)",
+            color: "#ffffff",
+            padding: "0.25rem 0.6rem",
+            fontSize: "0.65rem",
+            fontWeight: 700,
+            fontFamily: "var(--font-mono)",
+            border: "2px solid var(--color-border)",
+            transform: "rotate(6deg)",
+            zIndex: 10,
+            boxShadow: "2px 2px 0px var(--color-border)",
+          }}>
+            CS GRAD 2026
+          </span>
+          <div style={{
+            display: "inline-block",
+            background: "#ffffff",
+            border: "4px solid var(--color-border)",
+            padding: "0.5rem",
+            boxShadow: "6px 6px 0px var(--color-border)",
+          }}>
             <img
               src="/profilepic.jpg"
               alt="Huzaifa Bin Hamid"
               loading="eager"
               style={{
-                width: 160, height: 160, objectFit: "cover", borderRadius: "50%",
+                width: 150,
+                height: 150,
+                objectFit: "cover",
+                borderRadius: "0px",
                 display: "block",
+                filter: "grayscale(100%) contrast(110%)", /* Photocopy contrast zine style */
               }}
             />
           </div>
@@ -86,20 +128,6 @@ export function Hero() {
           </a>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <button
-        onClick={scrollToAbout}
-        className="bounce-arrow"
-        aria-label="Scroll down"
-        style={{
-          position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)",
-          background: "none", border: "none", cursor: "pointer",
-          color: "var(--color-text-muted)", zIndex: 3,
-        }}
-      >
-        <ChevronDown size={28} />
-      </button>
     </section>
   );
 }

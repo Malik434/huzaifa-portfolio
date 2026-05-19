@@ -59,7 +59,7 @@ export function Contact() {
                   { href: "https://twitter.com/ruhn_r", icon: <Twitter size={18} />, label: "Twitter / X" },
                   { href: "mailto:malikhuzaifa043@gmail.com", icon: <Mail size={18} />, label: "Email" },
                 ].map(({ href, icon, label }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="social-icon-btn" aria-label={label} style={{ textDecoration: "none" }}>
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="btn-outline" aria-label={label} style={{ textDecoration: "none", padding: "0.6rem", minWidth: "44px", minHeight: "44px", justifyContent: "center" }}>
                     {icon}
                   </a>
                 ))}

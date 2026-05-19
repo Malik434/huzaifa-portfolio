@@ -6,14 +6,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Huzaifa Bin Hamid — Full-Stack & Blockchain Developer",
+  title: "Huzaifa Bin Hamid — Brutalist Tech Portfolio",
   description:
-    "CS student and software developer specializing in blockchain, AI integration, and full-stack web apps. Currently seeking internship opportunities.",
-  keywords: ["Huzaifa Bin Hamid", "Full Stack Developer", "Blockchain", "React", "Next.js", "Portfolio"],
+    "CS graduate and Automation & Web3 Engineer. Shipped YieldSense DeFi protocol on Base inside Acurast TEEs. Specialized in n8n automation, Solidity, and React.",
+  keywords: ["Huzaifa Bin Hamid", "Automation Engineer", "n8n", "Web3 Developer", "Solidity", "Next.js", "Portfolio"],
   authors: [{ name: "Huzaifa Bin Hamid" }],
   openGraph: {
-    title: "Huzaifa Bin Hamid — Developer Portfolio",
-    description: "Full-Stack & Blockchain Developer | CS Student at COMSATS University",
+    title: "Huzaifa Bin Hamid — Brutalist Tech Portfolio",
+    description: "Automation & Web3 Engineer | CS Graduate from COMSATS",
     type: "website",
   },
   other: {
@@ -30,7 +30,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
           rel="stylesheet"
         />
       </head>

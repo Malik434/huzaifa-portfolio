@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { User, Cpu, FolderGit, Briefcase, Mail } from "lucide-react";
+import { User, Cpu, FolderGit, Briefcase, Mail, Globe } from "lucide-react";
 
 const LINKS = [
   { label: "About", id: "about", icon: User },
   { label: "Skills", id: "skills", icon: Cpu },
   { label: "Projects", id: "projects", icon: FolderGit },
   { label: "Experience", id: "experience", icon: Briefcase },
+  { label: "Outreach", id: "outreach", icon: Globe },
   { label: "Contact", id: "contact", icon: Mail },
 ];
 
@@ -16,7 +17,7 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       let currentSection = "";
-      
+
       for (const link of LINKS) {
         const el = document.getElementById(link.id);
         if (!el) continue;
@@ -81,7 +82,7 @@ export function Navbar() {
                   display: "inline-block",
                 }}
               >
-                ✦ HUZAIFA BIN HAMID // WEB3 & AUTOMATION ENGINEER ✦ COMSATS CS GRADUATE (JAN 2026) ✦ SHIPPED YIELDSENSE ON BASE MAINNET ✦ AVAILABLE FOR INTERNSHIPS & CONTRACTS ✦
+                ✦ HUZAIFA BIN HAMID // WEB3 & AUTOMATION ENGINEER ✦ COMSATS CS GRADUATE (FEB 2026) ✦ SHIPPED YIELDSENSE ON BASE MAINNET ✦ AVAILABLE FOR INTERNSHIPS & CONTRACTS ✦
               </span>
             ))}
           </div>

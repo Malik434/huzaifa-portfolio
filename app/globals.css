@@ -677,9 +677,35 @@
 
 /* ── Misc Utilities ───────────────────────────────────────── */
 .section-heading {
-  font-size: clamp(2rem, 5vw, 3.25rem);
-  font-weight: 800;
-  line-height: 1.1;
+  font-size: clamp(1.4rem, 4.2vw, 2.25rem) !important; /* Scaled down slightly to fit the ticket card layout beautifully */
+  font-weight: 900 !important;
+  line-height: 1.15;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  display: inline-block;
+  background: #ffffff;
+  border: 3.5px solid var(--color-border);
+  padding: 0.6rem 2.25rem;
+  box-shadow: 6px 6px 0px var(--color-border);
+  transform: rotate(-1.2deg);
+  transition: all var(--transition-smooth);
+  cursor: default;
+  position: relative;
+  z-index: 2;
+  /* FORCE VISIBLE HIGH-CONTRAST INK BLACK TEXT (Overrides background-clip gradient conflicts) */
+  color: var(--color-text-primary) !important;
+  -webkit-text-fill-color: var(--color-text-primary) !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: border-box !important;
+}
+
+.section-heading:hover {
+  transform: rotate(0.6deg) translate(-2.5px, -2.5px);
+  box-shadow: 8.5px 8.5px 0px var(--color-accent-primary);
+  /* Hover accent text color */
+  color: var(--color-accent-primary) !important;
+  -webkit-text-fill-color: var(--color-accent-primary) !important;
 }
 
 .section-subheading {

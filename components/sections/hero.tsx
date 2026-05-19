@@ -102,13 +102,32 @@ export function Hero() {
           </div>
         </div>
 
-        <p className="hero-line hero-line-1" style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-mono)", fontSize: "clamp(0.8rem,1.5vw,0.95rem)", marginBottom: "0.75rem", letterSpacing: "0.12em" }}>
+        <p className="hero-line hero-line-1" style={{ color: "var(--color-text-muted)", fontFamily: "var(--font-mono)", fontSize: "clamp(0.8rem,1.5vw,0.95rem)", marginBottom: "1rem", letterSpacing: "0.12em" }}>
           Hello World, I&apos;m
         </p>
 
-        <h1 className="hero-line hero-line-2 gradient-text" style={{ fontSize: "clamp(2.6rem,7vw,5.5rem)", fontWeight: 900, lineHeight: 1.05, marginBottom: "0.75rem" }}>
-          Huzaifa Bin Hamid
-        </h1>
+        <div style={{
+          display: "inline-block",
+          border: "3.5px solid var(--color-border)",
+          background: "#ffffff",
+          padding: "1rem 2.25rem",
+          boxShadow: "7px 7px 0px var(--color-border)",
+          marginBottom: "1.5rem",
+          transform: "rotate(-1deg)",
+          position: "relative",
+          zIndex: 2,
+        }}>
+          <h1 className="hero-line hero-line-2 gradient-text" style={{ 
+            fontSize: "clamp(1.8rem, 6.5vw, 4.5rem)", 
+            fontWeight: 900, 
+            lineHeight: 1, 
+            margin: 0,
+            textTransform: "uppercase",
+            letterSpacing: "-0.01em"
+          }}>
+            Huzaifa Bin Hamid
+          </h1>
+        </div>
 
         <p className="hero-line hero-line-3" style={{ fontSize: "clamp(1.1rem,2.5vw,1.5rem)", color: "var(--color-text-secondary)", marginBottom: "2.5rem", fontWeight: 500 }}>
           <Typewriter words={["Full-Stack Developer", "Blockchain Engineer", "AI Integrations Dev"]} />

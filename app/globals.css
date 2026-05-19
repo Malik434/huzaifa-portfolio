@@ -131,38 +131,46 @@
 }
 
 /* ── Scroll-Reveal Base States ────────────────────────────── */
-@media (prefers-reduced-motion: no-preference) {
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(45px) scale(0.96) rotate(-0.8deg);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.08);
+}
 
-  .scroll-reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+}
 
-  .scroll-reveal-left {
-    opacity: 0;
-    transform: translateX(-40px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-55px) scale(0.97) rotate(-1.5deg);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.08);
+}
 
-  .scroll-reveal-left.is-visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.scroll-reveal-left.is-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1) rotate(0deg);
+}
 
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(55px) scale(0.97) rotate(1.5deg);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.08);
+}
+
+.scroll-reveal-right.is-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1) rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal-left,
   .scroll-reveal-right {
-    opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  .scroll-reveal-right.is-visible {
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
@@ -350,43 +358,47 @@
 }
 
 /* ── Hero Stagger Animations ──────────────────────────────── */
-@media (prefers-reduced-motion: no-preference) {
-  .hero-line {
-    opacity: 0;
-    animation: fadeUp 0.7s ease-out forwards;
-  }
+.hero-line {
+  opacity: 0;
+  animation: fadeUp 0.7s ease-out forwards;
+}
 
-  .hero-line-1 {
-    animation-delay: 0.1s;
-  }
+.hero-line-1 {
+  animation-delay: 0.1s;
+}
 
-  .hero-line-2 {
-    animation-delay: 0.25s;
-  }
+.hero-line-2 {
+  animation-delay: 0.25s;
+}
 
-  .hero-line-3 {
-    animation-delay: 0.4s;
-  }
+/* Specific override to combine both entrance fade-in and infinite gradient shifting seamlessly */
+.hero-line-2.gradient-text {
+  animation: fadeUp 0.7s ease-out 0.25s forwards, gradientShift 5s ease infinite;
+}
 
-  .hero-line-4 {
-    animation-delay: 0.55s;
-  }
+.hero-line-3 {
+  animation-delay: 0.4s;
+}
 
-  .hero-line-5 {
-    animation-delay: 0.7s;
-  }
+.hero-line-4 {
+  animation-delay: 0.55s;
+}
 
-  .hero-img {
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out 0.05s forwards;
-  }
+.hero-line-5 {
+  animation-delay: 0.7s;
+}
+
+.hero-img {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out 0.05s forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .hero-line,
   .hero-img {
-    opacity: 1;
+    opacity: 1 !important;
+    animation: none !important;
+    transition: none !important;
   }
 }
 

@@ -20,7 +20,7 @@ export function AnimatedSection({
   className = "",
   direction = "up",
   delay = 0,
-  threshold = 0.15,
+  threshold = 0.05,
 }: AnimatedSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
 

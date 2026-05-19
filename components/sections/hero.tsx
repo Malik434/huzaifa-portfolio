@@ -97,7 +97,6 @@ export function Hero() {
                 objectFit: "cover",
                 borderRadius: "0px",
                 display: "block",
-                filter: "grayscale(100%) contrast(110%)", /* Photocopy contrast zine style */
               }}
             />
           </div>

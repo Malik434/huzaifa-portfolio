@@ -1071,3 +1071,21 @@ main, .hero-section {
     padding-bottom: 7.5rem !important; /* Prevents bottom mobile dock overlap */
   }
 }
+
+/* 🖼️ BRUTALIST SCREENSHOT PLACEHOLDER CUTOUTS */
+.screenshot-placeholder {
+  cursor: pointer;
+  position: relative;
+}
+
+.screenshot-placeholder:hover {
+  border-color: var(--color-accent-primary) !important;
+  background-color: #fefcf3 !important; /* Elegant newspaper-warm cream tint */
+  transform: translate(-3px, -3px);
+  box-shadow: 4px 4px 0px var(--color-border);
+}
+
+.screenshot-placeholder:active {
+  transform: translate(0px, 0px);
+  box-shadow: none;
+}

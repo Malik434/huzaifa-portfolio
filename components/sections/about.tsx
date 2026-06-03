@@ -22,14 +22,14 @@ export function About() {
             <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
               <div className="open-badge" style={{ alignSelf: "flex-start" }}>
                 <span className="green-dot" />
-                Currently Open to Work
+                Available for Project Builds
               </div>
 
               <p style={{ fontSize: "clamp(0.95rem,1.6vw,1.05rem)", color: "var(--color-text-secondary)", lineHeight: 1.9 }}>
-                I&apos;m a <strong style={{ color: "var(--color-text-primary)" }}>CS graduate from COMSATS University Islamabad</strong> with a passion for cutting-edge technologies. My expertise spans blockchain development, AI integration, and full-stack web applications.
+                I help founders, teams, and creators turn product ideas into reliable digital experiences. From early technical planning to polished deployment, I focus on building software that is practical, scalable, and ready for real users.
               </p>
               <p style={{ fontSize: "clamp(0.95rem,1.6vw,1.05rem)", color: "var(--color-text-secondary)", lineHeight: 1.9 }}>
-                I built and shipped <strong style={{ background: "var(--color-accent-secondary)", color: "#000000", padding: "0.05rem 0.3rem", border: "1.5px solid var(--color-border)", boxShadow: "1.5px 1.5px 0px var(--color-border)", display: "inline-block", transform: "rotate(-1.2deg)" }}>YieldSense</strong>, a production DeFi protocol on Base Mainnet inside Acurast TEEs, featured in the Acurast Builder Spotlight, alongside multiple Web3 and AI-integrated products.
+                Whether you need a full-stack web app, blockchain product, AI-powered workflow, or a prototype that validates your vision, I can help shape the architecture, build the core product, and bring your project from concept to reality.
               </p>
 
               <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", paddingTop: "0.5rem" }}>

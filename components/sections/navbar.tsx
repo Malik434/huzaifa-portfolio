@@ -82,7 +82,7 @@ export function Navbar() {
                   display: "inline-block",
                 }}
               >
-                ✦ HUZAIFA BIN HAMID // WEB3 & AUTOMATION ENGINEER ✦ COMSATS CS GRADUATE (FEB 2026) ✦ SHIPPED YIELDSENSE ON BASE MAINNET ✦ AVAILABLE FOR INTERNSHIPS & CONTRACTS ✦
+                ✦ HUZAIFA BIN HAMID // SOLO FULL-STACK DEVELOPER ✦ WEB3 & AUTOMATION ENGINEER ✦ SHIPPED YIELDSENSE ON BASE MAINNET ✦ OPEN TO OPPORTUNITIES, CONTRACTS & PRODUCT BUILDS ✦
               </span>
             ))}
           </div>

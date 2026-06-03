@@ -25,8 +25,8 @@ export function Contact() {
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
             <h2 className="section-heading gradient-text">Let&apos;s Connect</h2>
             <div className="accent-divider" />
-            <p className="section-subheading" style={{ maxWidth: 520, margin: "1.5rem auto 0" }}>
-              Actively seeking internship opportunities. Let&apos;s discuss how I can contribute to your team.
+            <p className="section-subheading" style={{ maxWidth: 560, margin: "1.5rem auto 0" }}>
+              Open to new opportunities, contract builds, and product collaborations. Let&apos;s discuss how I can help turn your idea into reliable, production-ready software.
             </p>
           </div>
         </AnimatedSection>

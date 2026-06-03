@@ -134,7 +134,7 @@ export function Hero() {
         </p>
 
         <p className="hero-line hero-line-4" style={{ fontSize: "clamp(0.95rem,1.8vw,1.1rem)", color: "var(--color-text-secondary)", maxWidth: 620, margin: "0 auto 2.5rem", lineHeight: 1.8 }}>
-          Passionate about blockchain, AI, and building scalable full-stack applications. Seeking software development internships to create innovative impact.
+          Solo developer building scalable full-stack, blockchain, and AI-powered products. Open to serious opportunities, contract work, and collaborations that turn strong ideas into shipped software.
         </p>
 
         <div className="hero-line hero-line-5" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "center" }}>

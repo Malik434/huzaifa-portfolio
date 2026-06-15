@@ -1,29 +1,46 @@
 "use client";
+
 import { useState } from "react";
-import { Github, ExternalLink } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { AnimatedSection } from "@/components/animated-section";
 
 const PROJECTS = [
   {
-    title: "YieldSense, An Autonomous DeFi Yield & TEE Trading Protocol",
-    desc: "Designed and deployed a trust-minimized yield compounding and grid-trading engine on Base Mainnet, running inside hardware-isolated Acurast TEE enclaves. Implemented native P-256 attestation verification (RIP-7212) in Solidity, EIP-712 intent signing for MEV protection, and a resilient RPC failover transport — featured in the Acurast Builder Spotlight.",
-    tags: ["Solidity", "Acurast TEE", "Base Mainnet", "EIP-712", "Viem/Wagmi", "Next.js", "Gnosis Safe"],
+    title: "YieldSense",
+    tagline: "Hardware-Verified Autonomous Yield Harvester",
+    role: "Founder & Lead Blockchain Engineer",
+    desc: "Flagship live Base Mainnet application: an Aerodrome USDC/AERO autocompounder that moves DeFi automation away from centralized keepers and exposed strategy servers.",
+    highlights: [
+      {
+        label: "Problem Solved",
+        text: "Eliminates traditional DeFi automation weaknesses: keeper centralization, strategy exposure, and MEV-vulnerable off-chain execution paths.",
+      },
+      {
+        label: "TEE Execution",
+        text: "Every decision, signature, and strategy parameter is executed inside an Acurast Trusted Execution Environment with on-chain integrity.",
+      },
+      {
+        label: "Dashboard",
+        text: "Includes a live Guardian Ledger for hardware-attested audit logs, gas optimization tracking, and projected alpha visibility.",
+      },
+    ],
+    tags: ["Base Network", "Acurast TEEs", "Aerodrome", "Solidity", "EIP-712", "RIP-7212", "Next.js"],
     category: "fullstack",
     live: "https://yieldsense.huzaifamalik.tech",
     github: "https://github.com/Malik434/yieldsense",
     featured: true,
-    spotlight: "https://acurast.com/blog/builder-spotlight/yieldsense/",
+    spotlight: "https://acurast.com/blog/builder-spotlight/yieldsense/?utm_source=x&utm_medium=social&utm_campaign=builderspotlight&utm_content=blog",
     screenshot: "/yieldsense-preview.png",
-    stamp: "TEE HARDENED // BASE MAINNET",
+    stamp: "LIVE MVP // AERODROME USDC/AERO // BASE MAINNET",
   },
   {
     title: "Task Wiser, A Web3 AI Project Management Platform",
-    desc: "Engineered a high-performance project management dApp featuring real-time Firebase syncing, a Python (Flask) Machine Learning microservice for task duration estimation, and Solidity escrow smart contracts for secure task completion payouts.",
+    desc: "Engineered a high-performance project management dApp featuring real-time Firebase syncing, a Python Flask machine-learning microservice for task duration estimation, and Solidity escrow contracts for secure task completion payouts.",
     tags: ["React", "Solidity", "Firebase", "Flask", "Scikit-Learn", "Ethers.js", "MetaMask"],
     category: "fullstack",
     live: "https://taskwiser.huzaifamalik.tech",
     github: "https://github.com/Malik434",
-    featured: true,
+    featured: false,
     spotlight: "",
     screenshot: "/taskwiser-preview.png",
     stamp: "SOLIDITY ESCROW // PLATFORM ACTIVE",
@@ -49,22 +66,24 @@ const PROJECTS = [
     github: "https://github.com/Malik434",
     featured: false,
     spotlight: "",
+    screenshot: "",
     stamp: "DATA INTEGRITY VERIFIED // SQL SECURE",
   },
   {
     title: "Predictive Task Inference & NLP Microservice",
-    desc: "Engineered a high-throughput Python (Flask) backend REST API for predictive task allocation. Implemented Scikit-Learn regression models to forecast project duration/cost metrics with 85%+ accuracy, and utilized NLTK-based Natural Language Processing to parse task descriptions and auto-recommend developers based on historical skill vectors.",
+    desc: "Engineered a high-throughput Python Flask REST API for predictive task allocation. Implemented Scikit-Learn regression models to forecast project duration and cost metrics with 85%+ accuracy, plus NLTK parsing for skill-based developer recommendations.",
     tags: ["Python", "Flask", "Scikit-Learn", "NLP", "RESTful API", "Machine Learning"],
     category: "backend",
     live: "",
     github: "https://github.com/Malik434",
     featured: false,
     spotlight: "",
+    screenshot: "",
     stamp: "85%+ PREDICTIVE INFERENCE // NLP TRAINED",
   },
   {
     title: "Automated Town Hall Editor & Scheduler",
-    desc: "Built a robust n8n workflow that automatically fetches raw weekly meeting recordings, processes/trims the videos using programmatic FFmpeg scripts, and schedules distribution across social channels, cutting work hours by 90%.",
+    desc: "Built an n8n workflow that automatically fetches raw weekly meeting recordings, processes and trims videos using programmatic FFmpeg scripts, and schedules distribution across social channels, cutting manual work by 90%.",
     tags: ["n8n", "FFmpeg", "YouTube API", "Workflow Automation"],
     category: "automation",
     live: "",
@@ -76,7 +95,7 @@ const PROJECTS = [
   },
   {
     title: "Automated Meeting Archival System",
-    desc: "Designed an automated corporate archival pipeline utilizing n8n that captures Zoom recordings, transcripts, and metadata upon meeting completion, auto-organizing files into a structured Google Drive hierarchy.",
+    desc: "Designed an automated corporate archival pipeline using n8n to capture Zoom recordings, transcripts, and metadata after each meeting and organize the outputs into a structured Google Drive hierarchy.",
     tags: ["n8n", "Zoom API", "Google Drive API", "Cloud Archiving"],
     category: "automation",
     live: "",
@@ -89,14 +108,14 @@ const PROJECTS = [
 ];
 
 const FILTERS = ["All", "Frontend", "Backend", "Full Stack", "Automation"] as const;
-type Filter = typeof FILTERS[number];
+type Filter = (typeof FILTERS)[number];
 
 const CAT_MAP: Record<Filter, string> = {
-  "All": "",
-  "Frontend": "frontend",
-  "Backend": "backend",
+  All: "",
+  Frontend: "frontend",
+  Backend: "backend",
   "Full Stack": "fullstack",
-  "Automation": "automation"
+  Automation: "automation",
 };
 
 function ProjectScreenshot({ src, alt }: { src: string; alt: string }) {
@@ -104,40 +123,11 @@ function ProjectScreenshot({ src, alt }: { src: string; alt: string }) {
 
   if (hasError || !src) {
     return (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          minHeight: "150px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          border: "3px dashed var(--color-border)",
-          background: "var(--color-bg-primary)",
-          padding: "1.25rem",
-          textAlign: "center",
-          transition: "all var(--transition-fast)"
-        }}
-        className="screenshot-placeholder"
-      >
-        <span style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>📷</span>
-        <span style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: "0.72rem",
-          fontWeight: 700,
-          color: "var(--color-text-primary)",
-          textTransform: "uppercase",
-          letterSpacing: "0.08em"
-        }}>
-          [ INSERT PREVIEW ]
+      <div className="screenshot-placeholder" style={{ width: "100%", height: "100%", minHeight: "150px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", border: "3px dashed var(--color-border)", background: "var(--color-bg-primary)", padding: "1.25rem", textAlign: "center", transition: "all var(--transition-fast)" }}>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.72rem", fontWeight: 700, color: "var(--color-text-primary)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+          [ Insert Preview ]
         </span>
-        <span style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: "0.6rem",
-          color: "var(--color-text-muted)",
-          marginTop: "0.3rem"
-        }}>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", color: "var(--color-text-muted)", marginTop: "0.3rem" }}>
           public{src}
         </span>
       </div>
@@ -145,33 +135,15 @@ function ProjectScreenshot({ src, alt }: { src: string; alt: string }) {
   }
 
   return (
-    <div style={{
-      width: "100%",
-      height: "100%",
-      position: "relative",
-      border: "3px solid var(--color-border)",
-      boxShadow: "4px 4px 0px var(--color-border)",
-      overflow: "hidden",
-      background: "#ffffff"
-    }}>
-      <img
-        src={src}
-        alt={alt}
-        onError={() => setHasError(true)}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          display: "block"
-        }}
-      />
+    <div style={{ width: "100%", height: "100%", position: "relative", border: "3px solid var(--color-border)", boxShadow: "4px 4px 0px var(--color-border)", overflow: "hidden", background: "#ffffff" }}>
+      <img src={src} alt={alt} onError={() => setHasError(true)} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
     </div>
   );
 }
 
 export function Projects() {
   const [active, setActive] = useState<Filter>("All");
-  const filtered = active === "All" ? PROJECTS : PROJECTS.filter(p => p.category === CAT_MAP[active]);
+  const filtered = active === "All" ? PROJECTS : PROJECTS.filter((project) => project.category === CAT_MAP[active]);
 
   return (
     <section id="projects" style={{ padding: "6rem 0", background: "var(--color-bg-secondary)" }}>
@@ -181,154 +153,98 @@ export function Projects() {
             <h2 className="section-heading gradient-text">Featured Projects</h2>
             <div className="accent-divider" />
           </div>
-          {/* Filter tabs */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", justifyContent: "center", marginBottom: "3rem" }}>
-            {FILTERS.map((f) => (
-              <button key={f} className={`filter-tab${active === f ? " active" : ""}`} onClick={() => setActive(f)}>
-                {f}
+            {FILTERS.map((filter) => (
+              <button key={filter} className={`filter-tab${active === filter ? " active" : ""}`} onClick={() => setActive(filter)}>
+                {filter}
               </button>
             ))}
           </div>
         </AnimatedSection>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: "1.25rem",
-          gridAutoFlow: "dense" // Dynamically packs smaller cards into holes next to featured cards
-        }}>
-          {filtered.map((p, i) => (
-            <AnimatedSection
-              key={p.title}
-              delay={i * 100}
-              className={p.featured ? "lg:col-span-2" : ""}
-            >
-              <div
-                className="card"
-                style={{
-                  padding: "1.75rem",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  position: "relative",
-                  overflow: "hidden",
-                  transform: `rotate(${i % 2 === 0 ? 0.6 : -0.7}deg)`,
-                }}
-              >
-                {!p.featured && p.screenshot && (
-                  <div style={{
-                    width: "100%",
-                    height: "145px",
-                    marginBottom: "1.25rem",
-                    display: "flex",
-                    flexDirection: "column"
-                  }}>
-                    <ProjectScreenshot src={p.screenshot} alt={p.title} />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.25rem", gridAutoFlow: "dense" }}>
+          {filtered.map((project, index) => (
+            <AnimatedSection key={project.title} delay={index * 100} className={project.featured ? "lg:col-span-2" : ""}>
+              <article className="card" style={{ padding: "1.75rem", height: "100%", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden", transform: `rotate(${index % 2 === 0 ? 0.6 : -0.7}deg)` }}>
+                {!project.featured && project.screenshot && (
+                  <div style={{ width: "100%", height: "145px", marginBottom: "1.25rem", display: "flex", flexDirection: "column" }}>
+                    <ProjectScreenshot src={project.screenshot} alt={project.title} />
                   </div>
                 )}
-                {p.featured && (
-                  <span style={{
-                    position: "absolute",
-                    top: "1rem",
-                    right: "1rem",
-                    background: "var(--color-accent-secondary)", /* Neon Yellow print */
-                    border: "2px solid var(--color-border)",
-                    color: "#000000",
-                    fontSize: "0.68rem",
-                    fontWeight: 800,
-                    padding: "0.25rem 0.6rem",
-                    borderRadius: "0px",
-                    letterSpacing: "0.08em",
-                    fontFamily: "var(--font-mono)",
-                    boxShadow: "2px 2px 0px var(--color-border)",
-                    transform: "rotate(3deg)",
-                    zIndex: 10,
-                  }}>FEATURED</span>
+
+                {project.featured && (
+                  <span style={{ position: "absolute", top: "1rem", right: "1rem", background: "var(--color-accent-secondary)", border: "2px solid var(--color-border)", color: "#000000", fontSize: "0.68rem", fontWeight: 800, padding: "0.25rem 0.6rem", letterSpacing: "0.08em", fontFamily: "var(--font-mono)", boxShadow: "2px 2px 0px var(--color-border)", transform: "rotate(3deg)", zIndex: 10 }}>
+                    FLAGSHIP LIVE MAINNET
+                  </span>
                 )}
 
-                <div
-                  className={p.featured ? "lg:flex lg:flex-row lg:items-stretch lg:gap-6" : ""}
-                  style={{ display: "flex", flexDirection: "column", height: "100%", gap: "1.25rem" }}
-                >
-                  {/* Left Content Area */}
-                  <div style={{
-                    flex: p.featured ? "1 1 58%" : "1 1 auto",
-                    display: "flex",
-                    flexDirection: "column",
-                    height: "100%",
-                  }}>
-                    {/* Top part: Title & Desc */}
+                <div className={project.featured ? "lg:flex lg:flex-row lg:items-stretch lg:gap-6" : ""} style={{ display: "flex", flexDirection: "column", height: "100%", gap: "1.25rem" }}>
+                  <div style={{ flex: project.featured ? "1 1 58%" : "1 1 auto", display: "flex", flexDirection: "column", height: "100%" }}>
                     <div style={{ marginBottom: "1rem" }}>
-                      <h3 className="glitch-hover" style={{ fontWeight: 800, color: "var(--color-text-primary)", fontSize: "1.1rem", marginBottom: "0.75rem", paddingRight: p.featured ? "5.5rem" : 0 }}>
-                        {p.title}
+                      <h3 className="glitch-hover" style={{ fontWeight: 800, color: "var(--color-text-primary)", fontSize: "1.1rem", marginBottom: "0.75rem", paddingRight: project.featured ? "7.5rem" : 0 }}>
+                        {project.title}
                       </h3>
+                      {"tagline" in project && project.tagline && (
+                        <p style={{ fontFamily: "var(--font-mono)", color: "var(--color-accent-primary)", fontSize: "0.78rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.45rem" }}>
+                          {project.tagline}
+                        </p>
+                      )}
+                      {"role" in project && project.role && (
+                        <p style={{ color: "var(--color-text-primary)", fontSize: "0.82rem", fontWeight: 800, marginBottom: "0.6rem" }}>
+                          Role: {project.role}
+                        </p>
+                      )}
                       <p style={{ color: "var(--color-text-secondary)", fontSize: "0.9rem", lineHeight: 1.65 }}>
-                        {p.desc}
+                        {project.desc}
                       </p>
+                      {"highlights" in project && project.highlights && (
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "0.75rem", marginTop: "1rem" }}>
+                          {project.highlights.map((item) => (
+                            <div key={item.label} style={{ border: "2px solid var(--color-border)", padding: "0.75rem", background: "var(--color-bg-primary)" }}>
+                              <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", fontWeight: 900, color: "var(--color-accent-primary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.35rem" }}>
+                                {item.label}
+                              </p>
+                              <p style={{ color: "var(--color-text-secondary)", fontSize: "0.78rem", lineHeight: 1.5 }}>
+                                {item.text}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
 
-                    {/* Bottom part: Tags & Actions & Stamp */}
                     <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: "1rem" }}>
                       <div>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginBottom: "1rem" }}>
-                          {p.tags.map((t) => <span key={t} className="tag-pill" style={{ fontSize: "0.72rem" }}>{t}</span>)}
+                          {project.tags.map((tag) => (
+                            <span key={tag} className="tag-pill" style={{ fontSize: "0.72rem" }}>
+                              {tag}
+                            </span>
+                          ))}
                         </div>
                         <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
-                          <a href={p.github} target="_blank" rel="noopener noreferrer" className="btn-outline" aria-label="GitHub repo" style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.75rem", minHeight: "auto" }}>
-                            <Github size={14} /> &nbsp; Code
+                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-outline" aria-label={`${project.title} GitHub repo`} style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.75rem", minHeight: "auto" }}>
+                            <Github size={14} /> Code
                           </a>
-                          {p.live && (
-                            <a href={p.live} target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label="Live demo" style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.75rem", minHeight: "auto" }}>
-                              <ExternalLink size={14} /> &nbsp; Live
+                          {project.live && (
+                            <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label={`${project.title} live application`} style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.75rem", minHeight: "auto" }}>
+                              <ExternalLink size={14} /> Live MVP
                             </a>
                           )}
-                          {p.spotlight && (
-                            <a
-                              href={p.spotlight}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="btn-primary"
-                              style={{
-                                textDecoration: "none",
-                                padding: "0.4rem 0.8rem",
-                                fontSize: "0.72rem",
-                                minHeight: "auto",
-                                background: "var(--color-accent-secondary)",
-                                color: "#000000",
-                              }}
-                              aria-label="Acurast Builder Spotlight"
-                            >
-                              ✦ Spotlight
+                          {project.spotlight && (
+                            <a href={project.spotlight} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.72rem", minHeight: "auto", background: "var(--color-accent-secondary)", color: "#000000" }} aria-label="Acurast Builder Spotlight">
+                              Spotlight
                             </a>
                           )}
                         </div>
                       </div>
 
-                      {/* Editorial Brutalist Newspaper Stamp to fill empty vertical spaces! */}
-                      {p.stamp && (
-                        <div style={{
-                          paddingTop: "0.85rem",
-                          borderTop: "2px dotted var(--color-border)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          marginTop: "0.25rem",
-                        }}>
-                          <span style={{
-                            fontFamily: "var(--font-mono)",
-                            fontSize: "0.65rem",
-                            fontWeight: 700,
-                            color: "var(--color-accent-primary)",
-                            textTransform: "uppercase",
-                            letterSpacing: "0.08em"
-                          }}>
-                            ● {p.stamp}
+                      {project.stamp && (
+                        <div style={{ paddingTop: "0.85rem", borderTop: "2px dotted var(--color-border)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.75rem", marginTop: "0.25rem" }}>
+                          <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.65rem", fontWeight: 700, color: "var(--color-accent-primary)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                            {project.stamp}
                           </span>
-                          <span style={{
-                            fontFamily: "var(--font-mono)",
-                            fontSize: "0.62rem",
-                            color: "var(--color-text-muted)"
-                          }}>
+                          <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.62rem", color: "var(--color-text-muted)" }}>
                             [ SECURE ]
                           </span>
                         </div>
@@ -336,20 +252,13 @@ export function Projects() {
                     </div>
                   </div>
 
-                  {/* Right Screenshot Area (Featured only) */}
-                  {p.featured && (
-                    <div style={{
-                      flex: "1 1 42%",
-                      minWidth: "200px",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                    }}>
-                      <ProjectScreenshot src={p.screenshot || ""} alt={p.title} />
+                  {project.featured && (
+                    <div style={{ flex: "1 1 42%", minWidth: "200px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                      <ProjectScreenshot src={project.screenshot || ""} alt={project.title} />
                     </div>
                   )}
                 </div>
-              </div>
+              </article>
             </AnimatedSection>
           ))}
         </div>

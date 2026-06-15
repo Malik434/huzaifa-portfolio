@@ -1,11 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { User, Cpu, FolderGit, Briefcase, Mail, Globe } from "lucide-react";
+import { User, Cpu, FolderGit, Briefcase, Mail, Globe, Newspaper, Rocket } from "lucide-react";
 
 const LINKS = [
   { label: "About", id: "about", icon: User },
   { label: "Skills", id: "skills", icon: Cpu },
   { label: "Projects", id: "projects", icon: FolderGit },
+  { label: "Press", id: "press", icon: Newspaper },
+  { label: "Initiatives", id: "initiatives", icon: Rocket },
   { label: "Experience", id: "experience", icon: Briefcase },
   { label: "Outreach", id: "outreach", icon: Globe },
   { label: "Contact", id: "contact", icon: Mail },

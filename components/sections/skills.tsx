@@ -101,6 +101,10 @@ const TECH_DATA: Record<string, { icon: React.ReactNode; color: string }> = {
     color: "#FF5400",
     icon: <CpuIcon size={14} />
   },
+  "Acurast": {
+    color: "#FF5400",
+    icon: <CpuIcon size={14} />
+  },
   "Base Mainnet": {
     color: "#0052FF",
     icon: (
@@ -121,6 +125,26 @@ const TECH_DATA: Record<string, { icon: React.ReactNode; color: string }> = {
   "RIP-7212": {
     color: "#E29F00",
     icon: <KeyRound size={14} />
+  },
+  "Trusted Execution Environments (TEEs)": {
+    color: "#FF5400",
+    icon: <ShieldCheck size={14} />
+  },
+  "Decentralized Physical Infrastructure Networks (DePIN)": {
+    color: "#359289",
+    icon: <Network size={14} />
+  },
+  "Trust-minimized Autonomous Systems": {
+    color: "#0052FF",
+    icon: <Workflow size={14} />
+  },
+  "Hardware-verified Off-chain Logic": {
+    color: "#E29F00",
+    icon: <CpuIcon size={14} />
+  },
+  "On-chain Integrity": {
+    color: "#363636",
+    icon: <ShieldCheck size={14} />
   },
   "MetaMask": {
     color: "#E2761B",
@@ -245,6 +269,9 @@ const SKILLS = [
   { category: "Programming Languages", icon: "{ }", items: ["Python", "JavaScript (Node.js/Express)", "SQL", "C", "Java (OOP)", "MATLAB"], wide: true },
   { category: "Web Development", icon: "</>", items: ["React.js", "Next.js", "HTML5", "CSS3", "Bootstrap", "PHP"], wide: false },
   { category: "Databases & Cloud", icon: "⬡", items: ["MySQL", "Firebase (Firestore, Realtime, Auth, Storage)"], wide: false },
+  { category: "Ecosystems", icon: "01", items: ["Base Mainnet", "Acurast"], wide: false },
+  { category: "Architectural Paradigms", icon: "02", items: ["Trusted Execution Environments (TEEs)", "Decentralized Physical Infrastructure Networks (DePIN)", "Trust-minimized Autonomous Systems"], wide: true },
+  { category: "Core Automation", icon: "03", items: ["Hardware-verified Off-chain Logic", "On-chain Integrity", "EIP-712", "RIP-7212"], wide: true },
   { category: "Web3 & Blockchain", icon: "⬢", items: ["Solidity", "Acurast TEE", "Base Mainnet", "EVM", "EIP-712", "RIP-7212", "MetaMask", "IPFS", "Infura API"], wide: true },
   { category: "Workflow Automation & AI", icon: "⚙", items: ["n8n (Level 2 Certified)", "AI Automation", "Flask (Python)", "Scikit-Learn", "NLP / NLTK", "FFmpeg", "Zoom & YouTube APIs"], wide: true },
   { category: "Mobile & DevOps", icon: "◈", items: ["React Native", "Git/GitHub", "Docker", "GitLab"], wide: false },

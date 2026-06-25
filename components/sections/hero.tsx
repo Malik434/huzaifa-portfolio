@@ -33,11 +33,11 @@ export function Hero() {
 
       {/* Floating code card — desktop only (Zine Collage Style) */}
       <div
-        className="hidden lg:block"
+        className="hidden lg:block hero-stack-card"
         style={{
           position: "absolute",
-          right: "6%",
-          top: "24%",
+          right: "5%",
+          top: "20%",
           maxWidth: 290,
           zIndex: 2,
           background: "#ffffff",

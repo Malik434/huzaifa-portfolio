@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { User, Cpu, FolderGit, Briefcase, Mail, Globe, Newspaper, Rocket } from "lucide-react";
+import { User, Cpu, FolderGit, Briefcase, Mail, Globe, Newspaper, Rocket, Menu, X } from "lucide-react";
 
 const LINKS = [
   { label: "About", id: "about", icon: User },
@@ -15,6 +15,7 @@ const LINKS = [
 
 export function Navbar() {
   const [active, setActive] = useState("");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +48,10 @@ export function Navbar() {
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMobileOpen(false);
   };
+
+  const activeLabel = LINKS.find((link) => link.id === active)?.label ?? "Navigate";
 
   return (
     <>
@@ -93,7 +97,7 @@ export function Navbar() {
 
       {/* ── DESKTOP: Brutalist Left Sidebar Dock ── */}
       <nav
-        className="hidden md:flex brutalist-sidebar"
+        className="hidden lg:flex brutalist-sidebar"
         style={{
           position: "fixed",
           left: "2rem",
@@ -102,8 +106,8 @@ export function Navbar() {
           zIndex: 50,
           flexDirection: "column",
           alignItems: "center",
-          gap: "1.25rem",
-          padding: "1.75rem 0.75rem",
+          gap: "var(--desktop-nav-shell-gap)",
+          padding: "var(--desktop-nav-shell-padding)",
           borderRadius: "0px", /* Brutalist sharp */
           background: "var(--color-bg-secondary)", /* Cream paper shaded */
           border: "3px solid var(--color-border)", /* Bold ink outline */
@@ -115,8 +119,8 @@ export function Navbar() {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           style={{
-            width: 44,
-            height: 44,
+            width: "var(--nav-button-size)",
+            height: "var(--nav-button-size)",
             borderRadius: "0px",
             background: "var(--color-accent-primary)", /* Tangerine stamp */
             border: "2px solid var(--color-border)",
@@ -128,7 +132,7 @@ export function Navbar() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginBottom: "0.5rem",
+            marginBottom: "var(--desktop-nav-logo-offset)",
             transition: "all var(--transition-fast)",
             boxShadow: "2px 2px 0px var(--color-border)",
           }}
@@ -139,10 +143,10 @@ export function Navbar() {
         </button>
 
         {/* Separator */}
-        <div style={{ width: "24px", height: "3px", borderTop: "2px dashed var(--color-border)", marginBottom: "0.5rem" }} />
+        <div style={{ width: "24px", height: "3px", borderTop: "2px dashed var(--color-border)", marginBottom: "var(--desktop-nav-logo-offset)" }} />
 
         {/* Nav Links Stack */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "var(--desktop-nav-link-gap)" }}>
           {LINKS.map(({ label, id, icon: Icon }) => {
             const isActive = active === id;
             return (
@@ -150,8 +154,8 @@ export function Navbar() {
                 <button
                   onClick={() => scrollTo(id)}
                   style={{
-                    width: 44,
-                    height: 44,
+                    width: "var(--nav-button-size)",
+                    height: "var(--nav-button-size)",
                     borderRadius: "0px", /* Brutalist sharp */
                     border: "2px solid var(--color-border)",
                     background: isActive ? "var(--color-accent-secondary)" : "#ffffff", /* Neon Yellow / White print */
@@ -182,54 +186,43 @@ export function Navbar() {
 
       {/* ── MOBILE: Floating Bottom Brutalist Dock ── */}
       <nav
-        className="flex md:hidden"
+        className="flex lg:hidden mobile-brutalist-dock"
         style={{
           position: "fixed",
           bottom: "1.25rem",
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 50,
-          flexDirection: "row",
-          alignItems: "center",
-          gap: "0.75rem",
-          padding: "0.5rem 0.85rem",
+          flexDirection: mobileOpen ? "column" : "row",
+          alignItems: mobileOpen ? "stretch" : "center",
+          gap: "var(--mobile-nav-gap)",
+          padding: "var(--mobile-nav-padding)",
           borderRadius: "0px", /* Brutalist sharp */
           background: "var(--color-bg-secondary)", /* Shaded paper */
           border: "3px solid var(--color-border)", /* Ink outline */
           boxShadow: "4px 4px 0px var(--color-border)", /* Solid drop shadow */
-          width: "max-content",
+          width: mobileOpen ? "min(22rem, calc(100vw - 1rem))" : "max-content",
           maxWidth: "94vw",
         }}
       >
-        {/* Mobile Mini Stamp */}
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          style={{
-            width: 44,
-            height: 44,
-            borderRadius: "0px",
-            background: "var(--color-accent-primary)", /* Tangerine */
-            border: "2px solid var(--color-border)",
-            color: "#ffffff",
-            fontFamily: "var(--font-heading)",
-            fontSize: "1.05rem",
-            fontWeight: 900,
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "2px 2px 0px var(--color-border)",
-          }}
-          aria-label="Scroll to top"
+          type="button"
+          onClick={() => setMobileOpen((open) => !open)}
+          className="mobile-nav-toggle"
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-nav-links"
+          aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
         >
-          H
+          {mobileOpen ? <X size={18} strokeWidth={2.5} /> : <Menu size={18} strokeWidth={2.5} />}
+          <span>{mobileOpen ? "Close" : activeLabel}</span>
         </button>
 
-        {/* Separator */}
-        <div style={{ width: "3px", height: "24px", borderLeft: "2px dashed var(--color-border)", margin: "0 0.25rem" }} />
-
         {/* Horizontal Mobile Buttons */}
-        <div style={{ display: "flex", gap: "0.4rem" }}>
+        <div
+          id="mobile-nav-links"
+          className="mobile-nav-links"
+          hidden={!mobileOpen}
+        >
           {LINKS.map(({ label, id, icon: Icon }) => {
             const isActive = active === id;
             return (
@@ -237,8 +230,7 @@ export function Navbar() {
                 key={id}
                 onClick={() => scrollTo(id)}
                 style={{
-                  width: 44,
-                  height: 44,
+                  minHeight: "var(--mobile-nav-button-size)",
                   borderRadius: "0px",
                   border: "2px solid var(--color-border)",
                   background: isActive ? "var(--color-accent-secondary)" : "#ffffff", /* Neon yellow highlight */
@@ -246,13 +238,17 @@ export function Navbar() {
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
+                  justifyContent: "flex-start",
+                  gap: "0.45rem",
+                  padding: "0 0.55rem",
                   boxShadow: isActive ? "2px 2px 0px var(--color-border)" : "1px 1px 0px var(--color-border)",
                   transform: isActive ? "translate(-1px, -1px)" : "none",
+                  width: "100%",
                 }}
                 aria-label={`Go to ${label}`}
               >
                 <Icon size={18} strokeWidth={2.5} />
+                <span>{label}</span>
               </button>
             );
           })}

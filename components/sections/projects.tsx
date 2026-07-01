@@ -115,7 +115,7 @@ const PROJECTS: Project[] = [
     },
     featured: false,
     spotlight: "",
-    screenshot: "",
+    screenshot: "/NexiClaw.png",
     stamp: "GRADIO INGESTION // METTA GRAPH OUTPUT",
   },
   {
@@ -145,7 +145,7 @@ const PROJECTS: Project[] = [
     },
     featured: false,
     spotlight: "",
-    screenshot: "",
+    screenshot: "/foodfusion.png",
     stamp: "NEXT.JS ORDERING FLOW // VERCEL DEPLOYED",
   },
   {

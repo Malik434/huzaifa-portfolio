@@ -4,7 +4,34 @@ import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { AnimatedSection } from "@/components/animated-section";
 
-const PROJECTS = [
+type ProjectCategory = "frontend" | "backend" | "fullstack" | "automation";
+
+type ProjectLink = {
+  href: string;
+  label: string;
+  ariaLabel: string;
+};
+
+type Project = {
+  title: string;
+  tagline?: string;
+  role?: string;
+  desc: string;
+  highlights?: Array<{
+    label: string;
+    text: string;
+  }>;
+  tags: string[];
+  category: ProjectCategory;
+  live?: ProjectLink;
+  code?: ProjectLink;
+  featured: boolean;
+  spotlight?: string;
+  screenshot: string;
+  stamp: string;
+};
+
+const PROJECTS: Project[] = [
   {
     title: "YieldSense",
     tagline: "Hardware-Verified Autonomous Yield Harvester",
@@ -26,8 +53,16 @@ const PROJECTS = [
     ],
     tags: ["Base Network", "Acurast TEEs", "Aerodrome", "Solidity", "EIP-712", "RIP-7212", "Next.js"],
     category: "fullstack",
-    live: "https://yieldsense.huzaifamalik.tech",
-    github: "https://github.com/Malik434/yieldsense",
+    live: {
+      href: "https://yieldsense.huzaifamalik.tech",
+      label: "Live MVP",
+      ariaLabel: "YieldSense live application",
+    },
+    code: {
+      href: "https://github.com/Malik434/yieldsense",
+      label: "Code",
+      ariaLabel: "YieldSense GitHub repo",
+    },
     featured: true,
     spotlight: "https://acurast.com/blog/builder-spotlight/yieldsense/?utm_source=x&utm_medium=social&utm_campaign=builderspotlight&utm_content=blog",
     screenshot: "/yieldsense-preview.png",
@@ -38,20 +73,91 @@ const PROJECTS = [
     desc: "Engineered a high-performance project management dApp featuring real-time Firebase syncing, a Python Flask machine-learning microservice for task duration estimation, and Solidity escrow contracts for secure task completion payouts.",
     tags: ["React", "Solidity", "Firebase", "Flask", "Scikit-Learn", "Ethers.js", "MetaMask"],
     category: "fullstack",
-    live: "https://taskwiser.huzaifamalik.tech",
-    github: "https://github.com/Malik434",
+    live: {
+      href: "https://taskwiser.huzaifamalik.tech",
+      label: "Live App",
+      ariaLabel: "Task Wiser live application",
+    },
+    code: {
+      href: "https://github.com/Malik434",
+      label: "Code",
+      ariaLabel: "Task Wiser GitHub profile link",
+    },
     featured: false,
     spotlight: "",
     screenshot: "/taskwiser-preview.png",
     stamp: "SOLIDITY ESCROW // PLATFORM ACTIVE",
   },
   {
+    title: "NexiClaw",
+    tagline: "Transcript-to-MeTTa Knowledge Graph Ingestion",
+    desc: "Built a Gradio-based qualitative transcript ingestion tool that extracts values, frictions, and power imbalances from interviews, then synthesizes the findings into MeTTa expressions for AtomSpace-style knowledge graphs.",
+    highlights: [
+      {
+        label: "Map-Reduce Pipeline",
+        text: "Splits long transcripts into overlapping chunks, extracts localized findings, and consolidates outputs into graph-ready expressions.",
+      },
+      {
+        label: "Reviewable Output",
+        text: "Returns a chunk-level qualitative audit log alongside generated MeTTa code so maintainers can validate output before importing it.",
+      },
+      {
+        label: "Hosted Workflow",
+        text: "Ships with client scripts for the Hugging Face Space endpoint and AtomSpace append workflows.",
+      },
+    ],
+    tags: ["Python", "Gradio", "Hugging Face Spaces", "MeTTa", "AtomSpace", "ASI Cloud", "Knowledge Graphs"],
+    category: "fullstack",
+    live: {
+      href: "https://huggingface.co/spaces/Malik434/NexiClaw",
+      label: "Hugging Face Space",
+      ariaLabel: "NexiClaw Hugging Face Space",
+    },
+    featured: false,
+    spotlight: "",
+    screenshot: "",
+    stamp: "GRADIO INGESTION // METTA GRAPH OUTPUT",
+  },
+  {
+    title: "Food Fusion",
+    tagline: "Modern Food Ordering Web App",
+    desc: "Developed a responsive food ordering experience where customers browse fusion dishes, filter menu categories, manage a persistent cart, complete checkout, and review order confirmation details.",
+    highlights: [
+      {
+        label: "Ordering Flow",
+        text: "Includes menu filters, dish detail modals, cart sidebar state, checkout validation, and confirmation screens.",
+      },
+      {
+        label: "Frontend Stack",
+        text: "Uses Next.js 15, React 19, TypeScript, Tailwind CSS, Zustand, Radix UI, Framer Motion, and Sonner.",
+      },
+      {
+        label: "Demo APIs",
+        text: "Implements demo order and payment-charge routes with clear boundaries before connecting production payment infrastructure.",
+      },
+    ],
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand", "Zod", "Radix UI"],
+    category: "fullstack",
+    live: {
+      href: "https://food-fusion-swart.vercel.app/",
+      label: "Live Demo",
+      ariaLabel: "Food Fusion live demo",
+    },
+    featured: false,
+    spotlight: "",
+    screenshot: "",
+    stamp: "NEXT.JS ORDERING FLOW // VERCEL DEPLOYED",
+  },
+  {
     title: "EVM Mobile Wallet Manager",
     desc: "React Native mobile-first wallet manager enabling secure private key handling, transaction signing, and real-time wallet balance tracking by integrating Infura APIs with a modular provider pattern for EVM testnets and mainnets.",
     tags: ["React Native", "Blockchain", "EVM", "Infura API", "Mobile Security"],
     category: "frontend",
-    live: "",
-    github: "https://github.com/Malik434/Semester-Project-MAD.-main",
+    code: {
+      href: "https://github.com/Malik434/Semester-Project-MAD.-main",
+      label: "Code",
+      ariaLabel: "EVM Mobile Wallet Manager GitHub repo",
+    },
     featured: false,
     spotlight: "",
     screenshot: "/EVM-Wallet-preview.png",
@@ -62,8 +168,11 @@ const PROJECTS = [
     desc: "Developed a professional crypto portfolio tracker using PHP and MySQL. Compares purchase price basis with real-time market data to calculate ROI and performance metrics, featuring an XML-based data CRUD interface and a custom SQL database schema.",
     tags: ["PHP", "MySQL", "XML", "CRUD", "SQL Database", "Portfolio Analytics"],
     category: "backend",
-    live: "",
-    github: "https://github.com/Malik434",
+    code: {
+      href: "https://github.com/Malik434",
+      label: "Code",
+      ariaLabel: "Portfolio Performance Analytics Engine GitHub profile link",
+    },
     featured: false,
     spotlight: "",
     screenshot: "",
@@ -74,8 +183,11 @@ const PROJECTS = [
     desc: "Engineered a high-throughput Python Flask REST API for predictive task allocation. Implemented Scikit-Learn regression models to forecast project duration and cost metrics with 85%+ accuracy, plus NLTK parsing for skill-based developer recommendations.",
     tags: ["Python", "Flask", "Scikit-Learn", "NLP", "RESTful API", "Machine Learning"],
     category: "backend",
-    live: "",
-    github: "https://github.com/Malik434",
+    code: {
+      href: "https://github.com/Malik434",
+      label: "Code",
+      ariaLabel: "Predictive Task Inference and NLP Microservice GitHub profile link",
+    },
     featured: false,
     spotlight: "",
     screenshot: "",
@@ -86,8 +198,11 @@ const PROJECTS = [
     desc: "Built an n8n workflow that automatically fetches raw weekly meeting recordings, processes and trims videos using programmatic FFmpeg scripts, and schedules distribution across social channels, cutting manual work by 90%.",
     tags: ["n8n", "FFmpeg", "YouTube API", "Workflow Automation"],
     category: "automation",
-    live: "",
-    github: "https://github.com/Malik434",
+    code: {
+      href: "https://github.com/Malik434",
+      label: "Code",
+      ariaLabel: "Automated Town Hall Editor and Scheduler GitHub profile link",
+    },
     featured: false,
     spotlight: "",
     screenshot: "/VideoEditingAutomation-preview.png",
@@ -98,8 +213,11 @@ const PROJECTS = [
     desc: "Designed an automated corporate archival pipeline using n8n to capture Zoom recordings, transcripts, and metadata after each meeting and organize the outputs into a structured Google Drive hierarchy.",
     tags: ["n8n", "Zoom API", "Google Drive API", "Cloud Archiving"],
     category: "automation",
-    live: "",
-    github: "https://github.com/Malik434",
+    code: {
+      href: "https://github.com/Malik434",
+      label: "Code",
+      ariaLabel: "Automated Meeting Archival System GitHub profile link",
+    },
     featured: false,
     spotlight: "",
     screenshot: "/MeetingArchival-preview.png",
@@ -223,12 +341,14 @@ export function Projects() {
                           ))}
                         </div>
                         <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
-                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-outline" aria-label={`${project.title} GitHub repo`} style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.75rem", minHeight: "auto" }}>
-                            <Github size={14} /> Code
-                          </a>
+                          {project.code && (
+                            <a href={project.code.href} target="_blank" rel="noopener noreferrer" className="btn-outline" aria-label={project.code.ariaLabel} style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.75rem", minHeight: "auto" }}>
+                              <Github size={14} /> {project.code.label}
+                            </a>
+                          )}
                           {project.live && (
-                            <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label={`${project.title} live application`} style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.75rem", minHeight: "auto" }}>
-                              <ExternalLink size={14} /> Live MVP
+                            <a href={project.live.href} target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label={project.live.ariaLabel} style={{ textDecoration: "none", padding: "0.4rem 0.8rem", fontSize: "0.75rem", minHeight: "auto" }}>
+                              <ExternalLink size={14} /> {project.live.label}
                             </a>
                           )}
                           {project.spotlight && (

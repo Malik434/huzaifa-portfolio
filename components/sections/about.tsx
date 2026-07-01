@@ -48,7 +48,7 @@ export function About() {
                 border: "3px solid var(--color-border)",
                 boxShadow: "4px 4px 0px var(--color-border)",
               }}>
-                <StatCounter target={6} suffix="+" label="Projects" />
+                <StatCounter target={9} suffix="+" label="Projects" />
                 <StatCounter target={4} suffix="yr" label="Experience" />
                 <StatCounter target={3} suffix="+" label="Tech Stacks" />
               </div>

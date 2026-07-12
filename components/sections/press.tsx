@@ -23,6 +23,15 @@ const PRESS_ITEMS = [
     desc: "Acurast's public announcement highlighting YieldSense as a live builder project using trusted execution for autonomous DeFi infrastructure.",
   },
   {
+    title: "NICL Cohort 4 Startup Incubation Acceptance",
+    source: "LinkedIn",
+    date: "July 2026",
+    link: "https://www.linkedin.com/posts/malikhuzaifa434_okay-this-one-actually-feels-good-to-share-share-7479759829821984768-Z-uG/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAACz_uC0BCssX-rAoidZ7jdvmMarfJQ9yTps",
+    icon: Linkedin,
+    badge: "Startup Incubation",
+    desc: "Founder update announcing acceptance into NICL Cohort 4, adding structured incubation support around Huzaifa's startup and product-building track.",
+  },
+  {
     title: "YieldSense Launch Update",
     source: "LinkedIn",
     date: "May 2026",

@@ -1,9 +1,23 @@
 "use client";
 
 import { AnimatedSection } from "@/components/animated-section";
-import { GitBranch, ShieldCheck, Users } from "lucide-react";
+import { Building2, GitBranch, ShieldCheck, Stethoscope, Users } from "lucide-react";
 
 const INITIATIVES = [
+  {
+    title: "NICL Cohort 4 Incubation",
+    status: "Accepted - July 2026",
+    desc: "Accepted into NICL Cohort 4 for startup incubation, adding mentorship, validation, and structured execution support around current product and business-building work.",
+    tags: ["NICL", "Startup Incubation", "Founder Track", "Product Validation"],
+    icon: Building2,
+  },
+  {
+    title: "DentaVyro",
+    status: "Live business website",
+    desc: "Building a dental billing business for US practices, with a public site focused on eligibility verification, EOB/ERA payment posting, HIPAA-conscious workflows, and outsourced revenue cycle support.",
+    tags: ["Dental Billing", "Revenue Cycle Management", "HIPAA", "Operations"],
+    icon: Stethoscope,
+  },
   {
     title: "Project Echo",
     status: "Grant proposal submitted - May 19, 2026",

@@ -64,6 +64,30 @@ const PROJECTS: Project[] = [
     stamp: "LIVE MVP // AERODROME USDC/AERO // BASE MAINNET",
   },
   {
+    title: "DentaVyro",
+    tagline: "Dental Billing & Revenue Cycle Website",
+    role: "Founder & Developer",
+    desc: "Developed and launched the public website for DentaVyro, my dental billing business focused on outsourced revenue cycle support for US dental practices, including eligibility verification, EOB/ERA payment posting, and HIPAA-conscious operational workflows.",
+    tags: [
+      "Next.js",
+      "Revenue Cycle Management",
+      "Dental Billing",
+      "HIPAA",
+      "Service Website",
+      "Business Operations",
+    ],
+    category: "fullstack",
+    live: {
+      href: "https://dentavyro.com",
+      label: "Live Site",
+      ariaLabel: "DentaVyro live website",
+    },
+    featured: false,
+    spotlight: "",
+    screenshot: "/dentavyro-preview.jpg",
+    stamp: "LIVE BUSINESS SITE // DENTAL RCM",
+  },
+  {
     title: "Task Wiser, A Web3 AI Project Management Platform",
     desc: "Engineered a high-performance project management dApp featuring real-time Firebase syncing, a Python Flask machine-learning microservice for task duration estimation, and Solidity escrow contracts for secure task completion payouts.",
     tags: [

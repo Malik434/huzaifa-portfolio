@@ -84,13 +84,11 @@ export function Experience() {
 }
 
 function EntryCard({ entry }: { entry: typeof ENTRIES[0] }) {
-  const rot = entry.title.length % 2 === 0 ? 0.6 : -0.7;
   return (
     <div
       className="card"
       style={{
         padding: "1.5rem",
-        transform: `rotate(${rot}deg)`,
       }}
     >
       <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", fontWeight: 700, color: "var(--color-accent-primary)", marginBottom: "0.4rem", letterSpacing: "0.08em" }}>
@@ -127,4 +125,3 @@ function EntryCard({ entry }: { entry: typeof ENTRIES[0] }) {
     </div>
   );
 }
-

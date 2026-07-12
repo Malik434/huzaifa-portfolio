@@ -3,15 +3,13 @@ import { BookOpen, Award } from "lucide-react";
 import { AnimatedSection } from "@/components/animated-section";
 import { StatCounter } from "@/components/stat-counter";
 
-const TAGS = ["Blockchain Enthusiast", "Full-Stack Developer", "AI Integration", "Open Source"];
-
 export function About() {
   return (
     <section id="about" style={{ padding: "6rem 0", background: "var(--color-bg-secondary)" }}>
       <div className="max-container">
         <AnimatedSection>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <h2 className="section-heading gradient-text">About Me</h2>
+            <h2 className="section-heading gradient-text">About</h2>
             <div className="accent-divider" />
           </div>
         </AnimatedSection>
@@ -26,15 +24,11 @@ export function About() {
               </div>
 
               <p style={{ fontSize: "clamp(0.95rem,1.6vw,1.05rem)", color: "var(--color-text-secondary)", lineHeight: 1.9 }}>
-                I help founders, teams, and creators turn product ideas into reliable digital experiences. From early technical planning to polished deployment, I focus on building software that is practical, scalable, and ready for real users.
+                I work best where product thinking and hands-on engineering meet: shaping the scope, choosing the right technical path, and shipping software that can be used by real people.
               </p>
               <p style={{ fontSize: "clamp(0.95rem,1.6vw,1.05rem)", color: "var(--color-text-secondary)", lineHeight: 1.9 }}>
-                Whether you need a full-stack web app, blockchain product, AI-powered workflow, or a prototype that validates your vision, I can help shape the architecture, build the core product, and bring your project from concept to reality.
+                My strongest work sits across full-stack apps, Web3 infrastructure, and automation systems, with a focus on practical delivery over unnecessary complexity.
               </p>
-
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", paddingTop: "0.5rem" }}>
-                {TAGS.map((t) => <span key={t} className="tag-pill">{t}</span>)}
-              </div>
 
               {/* Stats Box — Zine Fact Card */}
               <div style={{

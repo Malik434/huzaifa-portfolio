@@ -61,7 +61,7 @@ export function Initiatives() {
 
             return (
               <AnimatedSection key={item.title} delay={index * 100}>
-                <article className="card" style={{ padding: "1.5rem", height: "100%", transform: `rotate(${index % 2 === 0 ? 0.6 : -0.6}deg)` }}>
+                <article className="card" style={{ padding: "1.5rem", height: "100%" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.9rem" }}>
                     <span style={{ width: 40, height: 40, display: "inline-flex", alignItems: "center", justifyContent: "center", background: "var(--color-accent-secondary)", border: "2px solid var(--color-border)", boxShadow: "2px 2px 0px var(--color-border)" }}>
                       <Icon size={20} />

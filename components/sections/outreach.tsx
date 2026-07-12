@@ -225,14 +225,12 @@ export function Outreach() {
 
 function OutreachCard({ item, index }: { item: typeof RD_PROJECTS[0] | typeof DEVREL_OUTREACH[0]; index: number }) {
   const Icon = item.icon;
-  const rotation = index % 2 === 0 ? 0.5 : -0.6;
 
   return (
     <div
       className="card"
       style={{
         padding: "1.25rem",
-        transform: `rotate(${rotation}deg)`,
         display: "flex",
         flexDirection: "column",
         gap: "0.75rem",

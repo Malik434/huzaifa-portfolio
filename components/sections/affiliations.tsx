@@ -52,12 +52,6 @@ const AFFILIATIONS: Affiliation[] = [
     logo: "/affiliations/cardano.png",
     href: "https://projectcatalyst.io",
   },
-  {
-    name: "Base",
-    relationship: "YieldSense Mainnet Deployment",
-    logo: "/affiliations/base.svg",
-    href: "https://base.org",
-  },
 ];
 
 export function Affiliations() {

@@ -16,6 +16,7 @@ type Project = {
   title: string;
   tagline?: string;
   role?: string;
+  outcome: string;
   desc: string;
   highlights?: Array<{
     label: string;
@@ -36,6 +37,7 @@ const PROJECTS: Project[] = [
     title: "YieldSense",
     tagline: "Hardware-Verified Autonomous Yield Harvester",
     role: "Founder & Lead Blockchain Engineer",
+    outcome: "Live Base Mainnet DeFi automation product with TEE-backed execution.",
     desc: "Flagship live Base Mainnet application: an Aerodrome USDC/AERO autocompounder that moves DeFi automation away from centralized keepers and exposed strategy servers.",
     tags: [
       "Base Network",
@@ -67,6 +69,7 @@ const PROJECTS: Project[] = [
     title: "DentaVyro",
     tagline: "Dental Billing & Revenue Cycle Website",
     role: "Founder & Developer",
+    outcome: "Launched a public business website for a dental billing and revenue cycle service.",
     desc: "Developed and launched the public website for DentaVyro, my dental billing business focused on outsourced revenue cycle support for US dental practices, including eligibility verification, EOB/ERA payment posting, and HIPAA-conscious operational workflows.",
     tags: [
       "Next.js",
@@ -89,6 +92,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Task Wiser, A Web3 AI Project Management Platform",
+    outcome: "Built a real-time project management dApp with escrow-backed task payouts.",
     desc: "Engineered a high-performance project management dApp featuring real-time Firebase syncing, a Python Flask machine-learning microservice for task duration estimation, and Solidity escrow contracts for secure task completion payouts.",
     tags: [
       "React",
@@ -118,6 +122,7 @@ const PROJECTS: Project[] = [
   {
     title: "NexiClaw",
     tagline: "Transcript-to-MeTTa Knowledge Graph Ingestion",
+    outcome: "Turned qualitative transcripts into structured knowledge graph expressions.",
     desc: "Built a Gradio-based qualitative transcript ingestion tool that extracts values, frictions, and power imbalances from interviews, then synthesizes the findings into MeTTa expressions for AtomSpace-style knowledge graphs.",
     tags: [
       "Python",
@@ -142,6 +147,7 @@ const PROJECTS: Project[] = [
   {
     title: "Food Fusion",
     tagline: "Modern Food Ordering Web App",
+    outcome: "Delivered a polished ordering flow with cart, filters, checkout, and confirmation states.",
     desc: "Developed a responsive food ordering experience where customers browse fusion dishes, filter menu categories, manage a persistent cart, complete checkout, and review order confirmation details.",
     tags: [
       "Next.js",
@@ -165,6 +171,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "EVM Mobile Wallet Manager",
+    outcome: "Created a mobile-first EVM wallet manager for balances, signing, and key handling.",
     desc: "React Native mobile-first wallet manager enabling secure private key handling, transaction signing, and real-time wallet balance tracking by integrating Infura APIs with a modular provider pattern for EVM testnets and mainnets.",
     tags: [
       "React Native",
@@ -186,6 +193,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Portfolio Performance Analytics Engine",
+    outcome: "Built a crypto portfolio tracker for ROI comparison against market data.",
     desc: "Developed a professional crypto portfolio tracker using PHP and MySQL. Compares purchase price basis with real-time market data to calculate ROI and performance metrics, featuring an XML-based data CRUD interface and a custom SQL database schema.",
     tags: [
       "PHP",
@@ -208,6 +216,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Predictive Task Inference & NLP Microservice",
+    outcome: "Created a Python API for estimating task duration, cost, and skill-based recommendations.",
     desc: "Engineered a high-throughput Python Flask REST API for predictive task allocation. Implemented Scikit-Learn regression models to forecast project duration and cost metrics with 85%+ accuracy, plus NLTK parsing for skill-based developer recommendations.",
     tags: [
       "Python",
@@ -231,6 +240,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Automated Town Hall Editor & Scheduler",
+    outcome: "Reduced a recurring manual video editing workflow by roughly 90%.",
     desc: "Built an n8n workflow that automatically fetches raw weekly meeting recordings, processes and trims videos using programmatic FFmpeg scripts, and schedules distribution across social channels, cutting manual work by 90%.",
     tags: ["n8n", "FFmpeg", "YouTube API", "Workflow Automation"],
     category: "automation",
@@ -246,6 +256,7 @@ const PROJECTS: Project[] = [
   },
   {
     title: "Automated Meeting Archival System",
+    outcome: "Automated meeting capture, transcript storage, metadata handling, and Drive organization.",
     desc: "Designed an automated corporate archival pipeline using n8n to capture Zoom recordings, transcripts, and metadata after each meeting and organize the outputs into a structured Google Drive hierarchy.",
     tags: ["n8n", "Zoom API", "Google Drive API", "Cloud Archiving"],
     category: "automation",
@@ -501,11 +512,14 @@ export function Projects() {
                           Role: {project.role}
                         </p>
                       )}
+                      <p className="project-outcome">
+                        {project.outcome}
+                      </p>
                       <p
                         style={{
                           color: "var(--color-text-secondary)",
-                          fontSize: "0.9rem",
-                          lineHeight: 1.65,
+                          fontSize: "0.86rem",
+                          lineHeight: 1.6,
                         }}
                       >
                         {project.desc}
@@ -574,7 +588,7 @@ export function Projects() {
                             marginBottom: "1rem",
                           }}
                         >
-                          {project.tags.map((tag) => (
+                          {project.tags.slice(0, 4).map((tag) => (
                             <span
                               key={tag}
                               className="tag-pill"
@@ -648,7 +662,7 @@ export function Projects() {
                         </div>
                       </div>
 
-                      {project.stamp && (
+                      {project.stamp && project.featured && (
                         <div
                           style={{
                             paddingTop: "0.85rem",

@@ -19,19 +19,20 @@ The app shell is the single-page portfolio composition layer. It wires together 
 
 ## Render Order
 
-1. `CustomCursor`
-2. `Navbar`
-3. `Hero`
-4. `About`
-5. `Skills`
-6. `Projects`
-7. `Press`
-8. `Initiatives`
-9. `Experience`
-10. `Outreach`
-11. `Contact`
-12. `Footer`
-13. `BackToTop`
+1. `Navbar`
+2. `Hero`
+3. `Affiliations`
+4. `Services`
+5. `Projects`
+6. `Skills`
+7. `About`
+8. `Press`
+9. `Initiatives`
+10. `Experience`
+11. `Outreach`
+12. `Contact`
+13. `Footer`
+14. `BackToTop`
 
 ## Architecture Rules
 

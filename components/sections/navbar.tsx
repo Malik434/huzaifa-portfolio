@@ -1,16 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import { User, Cpu, FolderGit, Briefcase, Mail, Globe, Newspaper, Rocket, Menu, X, Handshake } from "lucide-react";
+import { Cpu, FolderGit, Mail, Menu, X, Handshake, Wrench } from "lucide-react";
 
 const LINKS = [
-  { label: "Affiliations", id: "affiliations", icon: Handshake },
-  { label: "About", id: "about", icon: User },
-  { label: "Skills", id: "skills", icon: Cpu },
+  { label: "Proof", id: "affiliations", icon: Handshake },
+  { label: "Services", id: "services", icon: Wrench },
   { label: "Projects", id: "projects", icon: FolderGit },
-  { label: "Press", id: "press", icon: Newspaper },
-  { label: "Initiatives", id: "initiatives", icon: Rocket },
-  { label: "Experience", id: "experience", icon: Briefcase },
-  { label: "Outreach", id: "outreach", icon: Globe },
+  { label: "Stack", id: "skills", icon: Cpu },
   { label: "Contact", id: "contact", icon: Mail },
 ];
 
@@ -110,9 +106,9 @@ export function Navbar() {
           gap: "var(--desktop-nav-shell-gap)",
           padding: "var(--desktop-nav-shell-padding)",
           borderRadius: "0px", /* Brutalist sharp */
-          background: "var(--color-bg-secondary)", /* Cream paper shaded */
-          border: "3px solid var(--color-border)", /* Bold ink outline */
-          boxShadow: "5px 5px 0px var(--color-border)", /* Flat offset drop shadow */
+          background: "rgba(255, 255, 255, 0.92)",
+          border: "2px solid var(--color-border)",
+          boxShadow: "3px 3px 0px var(--color-border)",
           transition: "all var(--transition-smooth)",
         }}
       >
@@ -158,16 +154,16 @@ export function Navbar() {
                     width: "var(--nav-button-size)",
                     height: "var(--nav-button-size)",
                     borderRadius: "0px", /* Brutalist sharp */
-                    border: "2px solid var(--color-border)",
-                    background: isActive ? "var(--color-accent-secondary)" : "#ffffff", /* Neon Yellow / White print */
+                    border: "1.5px solid var(--color-border)",
+                    background: isActive ? "var(--color-accent-secondary)" : "transparent",
                     color: "var(--color-text-primary)",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     transition: "all var(--transition-fast)",
-                    boxShadow: isActive ? "3px 3px 0px var(--color-border)" : "1px 1px 0px var(--color-border)",
-                    transform: isActive ? "translate(-2px, -2px)" : "none",
+                    boxShadow: isActive ? "2px 2px 0px var(--color-border)" : "none",
+                    transform: isActive ? "translate(-1px, -1px)" : "none",
                   }}
                   className="dock-icon-button"
                   aria-label={`Go to ${label}`}
@@ -199,10 +195,10 @@ export function Navbar() {
           gap: "var(--mobile-nav-gap)",
           padding: "var(--mobile-nav-padding)",
           borderRadius: "0px", /* Brutalist sharp */
-          background: "var(--color-bg-secondary)", /* Shaded paper */
-          border: "3px solid var(--color-border)", /* Ink outline */
-          boxShadow: "4px 4px 0px var(--color-border)", /* Solid drop shadow */
-          width: mobileOpen ? "min(22rem, calc(100vw - 1rem))" : "max-content",
+          background: "rgba(255, 255, 255, 0.96)",
+          border: "2px solid var(--color-border)",
+          boxShadow: "3px 3px 0px var(--color-border)",
+          width: mobileOpen ? "min(18rem, calc(100vw - 1rem))" : "max-content",
           maxWidth: "94vw",
         }}
       >

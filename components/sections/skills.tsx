@@ -38,7 +38,6 @@ const SKILL_GROUPS: SkillGroup[] = [
     category: "Web3 Infrastructure",
     items: [
       { name: "Solidity", logo: "/tech/solidity.svg" },
-      { name: "Base", logo: "/affiliations/base.svg" },
       { name: "MetaMask", logo: "/tech/metamask.svg" },
       { name: "IPFS", logo: "/tech/ipfs.svg" },
     ],

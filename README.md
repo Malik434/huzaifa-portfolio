@@ -61,18 +61,20 @@ Notes:
 1. [[components/cursor.tsx|CustomCursor]]
 2. [[components/sections/navbar.tsx|Navbar]]
 3. [[components/sections/hero.tsx|Hero]]
-4. [[components/sections/about.tsx|About]]
-5. [[components/sections/skills.tsx|Skills]]
+4. [[components/sections/affiliations.tsx|Affiliations]]
+5. [[components/sections/services.tsx|Services]]
 6. [[components/sections/projects.tsx|Projects]]
-7. [[components/sections/press.tsx|Press]]
-8. [[components/sections/initiatives.tsx|Initiatives]]
-9. [[components/sections/experience.tsx|Experience]]
-10. [[components/sections/outreach.tsx|Outreach]]
-11. [[components/sections/contact.tsx|Contact]]
-12. [[components/sections/footer.tsx|Footer]]
-13. [[components/cursor.tsx|BackToTop]]
+7. [[components/sections/skills.tsx|Skills]]
+8. [[components/sections/about.tsx|About]]
+9. [[components/sections/press.tsx|Press]]
+10. [[components/sections/initiatives.tsx|Initiatives]]
+11. [[components/sections/experience.tsx|Experience]]
+12. [[components/sections/outreach.tsx|Outreach]]
+13. [[components/sections/contact.tsx|Contact]]
+14. [[components/sections/footer.tsx|Footer]]
+15. [[components/cursor.tsx|BackToTop]]
 
-All section IDs must stay aligned with [[components/sections/navbar.tsx]], because the navbar scrolls to DOM IDs and highlights the active section from viewport position.
+The navbar intentionally links only to the client-critical stops: proof, services, projects, stack, and contact. Other sections remain available by scrolling.
 
 ## Where To Edit Content
 

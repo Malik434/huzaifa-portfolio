@@ -71,7 +71,7 @@ export function Press() {
 
             return (
               <AnimatedSection key={item.title} delay={index * 90}>
-                <article className="card" style={{ padding: "1.5rem", height: "100%", display: "flex", flexDirection: "column", gap: "0.85rem", transform: `rotate(${index % 2 === 0 ? -0.6 : 0.6}deg)` }}>
+                <article className="card" style={{ padding: "1.5rem", height: "100%", display: "flex", flexDirection: "column", gap: "0.85rem" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", gap: "0.75rem", alignItems: "center" }}>
                     <span className="tag-pill tag-pill-green" style={{ fontSize: "0.65rem" }}>
                       {item.badge}

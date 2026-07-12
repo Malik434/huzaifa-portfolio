@@ -12,6 +12,7 @@ Code directory: [components/sections](../../components/sections)
 - [hero.tsx](../../components/sections/hero.tsx): first viewport, profile image, intro copy, typewriter roles.
 - [about.tsx](../../components/sections/about.tsx): bio, education, languages, certifications, counters.
 - [affiliations.tsx](../../components/sections/affiliations.tsx): associated company, ecosystem, institution, and incubator logo grid.
+- [services.tsx](../../components/sections/services.tsx): client-facing service categories and build capabilities.
 - [skills.tsx](../../components/sections/skills.tsx): logo-led Technical Arsenal groups backed by [public/tech](../../public/tech).
 - [projects.tsx](../../components/sections/projects.tsx): `PROJECTS`, filters, links, screenshot previews.
 - [press.tsx](../../components/sections/press.tsx): `PRESS_ITEMS` coverage/social proof.
@@ -27,12 +28,13 @@ Most content is colocated with its component as local constants. This keeps edit
 
 ## Navigation Contract
 
-Each scrollable section must have an `id` matching a link in [navbar.tsx](../../components/sections/navbar.tsx).
+The navbar links only to the client-critical sections in [navbar.tsx](../../components/sections/navbar.tsx). Other sections still need stable IDs for scrolling and deep links.
 
 Current section IDs:
 
 - `about`
 - `affiliations`
+- `services`
 - `skills`
 - `projects`
 - `press`

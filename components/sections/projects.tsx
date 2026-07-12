@@ -327,27 +327,12 @@ function ProjectScreenshot({ src, alt }: { src: string; alt: string }) {
   }
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        position: "relative",
-        border: "3px solid var(--color-border)",
-        boxShadow: "4px 4px 0px var(--color-border)",
-        overflow: "hidden",
-        background: "#ffffff",
-      }}
-    >
+    <div className="project-screenshot-frame">
       <img
         src={src}
         alt={alt}
         onError={() => setHasError(true)}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          display: "block",
-        }}
+        className="project-screenshot-image"
       />
     </div>
   );
@@ -415,17 +400,14 @@ export function Projects() {
                   flexDirection: "column",
                   position: "relative",
                   overflow: "hidden",
-                  transform: `rotate(${index % 2 === 0 ? 0.6 : -0.7}deg)`,
                 }}
               >
                 {!project.featured && project.screenshot && (
                   <div
+                    className="project-preview-shell"
                     style={{
                       width: "100%",
-                      height: "145px",
                       marginBottom: "1.25rem",
-                      display: "flex",
-                      flexDirection: "column",
                     }}
                   >
                     <ProjectScreenshot
@@ -706,6 +688,7 @@ export function Projects() {
 
                   {project.featured && (
                     <div
+                      className="project-preview-shell project-preview-shell-featured"
                       style={{
                         flex: "1 1 42%",
                         minWidth: "200px",

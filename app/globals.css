@@ -1256,3 +1256,28 @@ main, .hero-section {
   transform: translate(0px, 0px);
   box-shadow: none;
 }
+
+.project-preview-shell {
+  width: 100%;
+}
+
+.project-preview-shell-featured {
+  align-self: center;
+}
+
+.project-screenshot-frame {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border: 3px solid var(--color-border);
+  background: #ffffff;
+  box-shadow: 4px 4px 0 var(--color-border);
+  line-height: 0;
+}
+
+.project-screenshot-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: auto;
+}

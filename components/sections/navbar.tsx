@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { User, Cpu, FolderGit, Briefcase, Mail, Globe, Newspaper, Rocket, Menu, X, Handshake } from "lucide-react";
 
 const LINKS = [
-  { label: "About", id: "about", icon: User },
   { label: "Affiliations", id: "affiliations", icon: Handshake },
+  { label: "About", id: "about", icon: User },
   { label: "Skills", id: "skills", icon: Cpu },
   { label: "Projects", id: "projects", icon: FolderGit },
   { label: "Press", id: "press", icon: Newspaper },

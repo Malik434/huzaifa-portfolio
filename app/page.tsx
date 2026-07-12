@@ -18,17 +18,16 @@ import { Experience } from "@/components/sections/experience";
 import { Outreach }   from "@/components/sections/outreach";
 import { Contact }    from "@/components/sections/contact";
 import { Footer }     from "@/components/sections/footer";
-import { CustomCursor, BackToTop } from "@/components/cursor";
+import { BackToTop } from "@/components/cursor";
 
 export default function Portfolio() {
   return (
     <>
-      <CustomCursor />
       <Navbar />
       <main>
         <Hero />
-        <About />
         <Affiliations />
+        <About />
         <Skills />
         <Projects />
         <Press />

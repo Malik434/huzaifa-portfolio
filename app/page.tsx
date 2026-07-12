@@ -9,6 +9,7 @@
 import { Navbar }     from "@/components/sections/navbar";
 import { Hero }       from "@/components/sections/hero";
 import { About }      from "@/components/sections/about";
+import { Affiliations } from "@/components/sections/affiliations";
 import { Skills }     from "@/components/sections/skills";
 import { Projects }   from "@/components/sections/projects";
 import { Press }      from "@/components/sections/press";
@@ -27,6 +28,7 @@ export default function Portfolio() {
       <main>
         <Hero />
         <About />
+        <Affiliations />
         <Skills />
         <Projects />
         <Press />

@@ -1,20 +1,34 @@
 # Huzaifa Portfolio Agent Index
 
-This repository is a single-page Next.js portfolio for Huzaifa Bin Hamid. Use this file as the Obsidian-friendly starting point for agent work. It links the main code paths with `[[wikilinks]]` so sections, assets, and shared helpers are easy to locate.
+This repository is a single-page Next.js portfolio for Huzaifa Bin Hamid. Use this file as the Obsidian-friendly starting point for agent work.
+
+## Obsidian Usage
+
+Open the repository root as an Obsidian vault. Obsidian reads this `README.md` as a note because it is a Markdown file.
+
+For the graph view, use the architecture bridge notes under [[docs/architecture/Architecture Map]]. Obsidian graphs Markdown notes more reliably than source files, so the bridge notes connect the project architecture with `[[wikilinks]]` and point to real code with normal relative Markdown links.
+
+Start here:
+- [[docs/architecture/Architecture Map]]
+- [[docs/architecture/App Shell]]
+- [[docs/architecture/Sections]]
+- [[docs/architecture/Styling System]]
+- [[docs/architecture/Assets]]
+- [[docs/architecture/Agent Workflows]]
 
 ## Quick Map
 
-- App entry: [[app/page.tsx]]
-- Root layout and metadata: [[app/layout.tsx]]
-- Global design system and responsive CSS: [[app/globals.css]]
-- Tailwind config: [[tailwind.config.ts]]
-- Next config: [[next.config.mjs]]
-- Shared class utility: [[lib/utils.ts]]
-- Public assets: [[public]]
-- Section components: [[components/sections]]
-- Shared interaction helpers: [[components]]
-- UI primitives: [[components/ui]]
-- Hooks: [[hooks]]
+- App entry: [[docs/architecture/App Shell]] - [app/page.tsx](app/page.tsx)
+- Root layout and metadata: [[docs/architecture/App Shell]] - [app/layout.tsx](app/layout.tsx)
+- Global design system and responsive CSS: [[docs/architecture/Styling System]] - [app/globals.css](app/globals.css)
+- Tailwind config: [[docs/architecture/Styling System]] - [tailwind.config.ts](tailwind.config.ts)
+- Next config: [[docs/architecture/App Shell]] - [next.config.mjs](next.config.mjs)
+- Shared class utility: [lib/utils.ts](lib/utils.ts)
+- Public assets: [[docs/architecture/Assets]] - [public](public)
+- Section components: [[docs/architecture/Sections]] - [components/sections](components/sections)
+- Shared interaction helpers: [[docs/architecture/App Shell]] - [components](components)
+- UI primitives: [components/ui](components/ui)
+- Hooks: [hooks](hooks)
 
 ## Runtime
 
@@ -131,6 +145,19 @@ Preview image assets currently used:
 - [[public/EVM-Wallet-preview.png]]
 - [[public/VideoEditingAutomation-preview.png]]
 - [[public/MeetingArchival-preview.png]]
+
+Affiliation logo assets:
+- [[public/affiliations/singularitynet.svg]]
+- [[public/affiliations/Acurast.svg]]
+- [[public/affiliations/peaq.png]]
+- [[public/affiliations/comsats.png]]
+- [[public/affiliations/nicl.png]]
+- [[public/affiliations/n8n.svg]]
+- [[public/affiliations/cardano.svg]]
+- [[public/affiliations/base.svg]]
+
+Technical Arsenal logo assets:
+- [[public/tech]]
 
 Preview rendering CSS:
 - `.project-preview-shell`
